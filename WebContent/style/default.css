@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+html,body,div {
+	margin: 0;
+	padding: 0;
+}
+
+#gamebox {
+	box-shadow: 0px 0px 10px;
+	margin: 25px auto;
+	width: 1146px;
+}
+
+#game,#panelusuario {
+	float: left;
+}
+
+div#panelusuario {
+	width: 250px;
+	box-shadow: 0px 0px 10px;
+}
+
+#keyboard {
+	text-align: center;
+	margin: auto;
+}
+
+#keyboard img {
+	height: 50px;
+}
+
+.float {
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
