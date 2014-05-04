@@ -1,4 +1,4 @@
-package prueba;
+package gallinator.prueba;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package tileMap;
+package gallinator.tileMap;
 
 public class Terrains {
 	private String name;

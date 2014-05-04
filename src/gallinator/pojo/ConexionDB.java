@@ -1,4 +1,4 @@
-package ikex.pojo;
+package gallinator.pojo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 public class ConexionDB {
 
-	private static final String DataSource = "java:/comp/env/jdbc/ikexDB";
+	private static final String DataSource = "java:/comp/env/jdbc/gallinator";
 	protected DataSource datasource = null;
 	protected DataSource basicdatasource = null;
 	protected Connection conexion;

@@ -1,4 +1,4 @@
-package tileMap;
+package gallinator.tileMap;
 
 public class Tilesets {
 	private int firstgid;

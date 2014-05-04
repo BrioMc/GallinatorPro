@@ -5,14 +5,13 @@ table,tr,td {
 	margin: 0;
 }
 
-table {
+#lvgame {
 	background-image: url("../images/mapas/Lv1.png");
 	border-collapse: collapse;
 }
 
-td {
+#lvgame td {
 	width: 32px;
 	height: 32px;
 	display: inline-block;
 }
-

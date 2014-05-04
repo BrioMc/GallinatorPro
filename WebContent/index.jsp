@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:sql="http://java.sun.com/jsp/jstl/sql"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions" version="2.0">
 	<jsp:directive.page contentType="text/html; charset=UTF-8"
 		pageEncoding="UTF-8" session="true" />
 	<jsp:output doctype-root-element="html"
@@ -10,6 +13,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style/default.css"
 	media="screen" />
+<link rel="stylesheet" type="text/css" href="style/keys.css"
+	media="screen" />
 <title>GallinatorPro</title>
 <jsp:include page="/includes/js.jsp" />
 </head>
@@ -17,7 +22,8 @@
 	<div id="gamebox">
 		<jsp:include page="/includes/loggin.jsp" />
 
-		<div id="panelusuario"><jsp:include page="/includes/keyboard.jsp" /></div>
+		<div id="panelusuario"><jsp:include
+				page="/includes/keyboard.jsp" /></div>
 		<div class="clear"></div>
 	</div>
 </body>

@@ -1,4 +1,4 @@
-package ikex.pojo;
+package gallinator.pojo;
 
 import java.sql.SQLException;
 import java.util.regex.Matcher;

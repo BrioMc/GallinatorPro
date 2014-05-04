@@ -3,8 +3,8 @@
 <dwr>
 	<allow>
 		<create creator="new" javascript="Mapa">
-			<param name="class" value="json.MapaJson" />
+			<param name="class" value="gallinator.dwr.Mapa" />
 		</create>
-		<convert converter="bean" match="tileMap.*" />
+		<convert converter="bean" match="gallinator.tileMap.*" />
 	</allow>
 </dwr>
