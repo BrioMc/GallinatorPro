@@ -13,7 +13,7 @@
 		</form>
 	</div>
 	<div id="signin">
-		<form action="ControladorLogin" method="post">
+		<form action="ControladorRegistro" method="post">
 			<table>
 				<tr>
 					<td>Usuario:</td>
@@ -34,8 +34,8 @@
 				<tr>
 					<td>Clase:</td>
 					<td><select name="clase">
-							<option value="guerrero">Guerrero</option>
-							<option value="mago">Mago</option>
+							<option value="warrior">Guerrero</option>
+							<option value="mage">Mago</option>
 					</select></td>
 				</tr>
 				<tr>
