@@ -12,7 +12,7 @@ public class MapaJson {
 	public static Mapa mapa() {
 		Mapa mapa = new Mapa();
 		try {
-			String File = "d:\\Trabajos\\Eclipse\\Workspace\\GallinatorPro\\WebContent\\json\\Lv1.json";
+			String File = "D:/Trabajos/Eclipse/Workspace/GallinatorPro/Lv1.json";
 			ObjectMapper mapper = new ObjectMapper();
 			mapa = mapper.readValue(new File(File), Mapa.class);
 		} catch (JsonGenerationException e) {

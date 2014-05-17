@@ -7,16 +7,21 @@ import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 
-public class UsuarioDAO extends ConexionDB {
+public class PartidaDAO extends ConexionDB {
 
-	public void RegisterUser(User usuario) {
+	public void save(SesionPlayer usuario) {
 		try {
 			getConexion();
 			String insert = "insert into usuario(User, Pass, Email) values(?,?,?)";
 			pstmt = conexion.prepareStatement(insert);
-			pstmt.setString(1, usuario.getUser());
-			pstmt.setString(2, usuario.getPass());
-			pstmt.setString(3, usuario.getEmail());
+			pstmt.setInt(1, usuario.getSangre());
+			pstmt.setInt(2, usuario.getMaxSangre());
+			pstmt.setInt(3, usuario.getMana());
+			pstmt.setInt(4, usuario.getMaxMana());
+			pstmt.setInt(5, usuario.getDmgF());
+			pstmt.setInt(6, usuario.getDmgH());
+			pstmt.setInt(7, usuario.getExp());
+			pstmt.setInt(8, usuario.getLv());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println(e.getErrorCode());

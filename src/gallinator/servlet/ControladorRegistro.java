@@ -1,6 +1,6 @@
 package gallinator.servlet;
 
-import gallinator.DAO.UsuarioDAO;
+import gallinator.modelo.ModelFackade;
 import gallinator.modelo.Personaje;
 import gallinator.modelo.User;
 
@@ -37,7 +37,6 @@ public class ControladorRegistro extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// Registro de un Usuario
 		User user = new User();
 		user.setUser(request.getParameter("user"));
 		user.setPass(request.getParameter("pass"));
@@ -46,9 +45,9 @@ public class ControladorRegistro extends HttpServlet {
 		player.setAlias(request.getParameter("alias"));
 		player.setClase(request.getParameter("clase"));
 		player.setUsuariofk(request.getParameter("user"));
-		UsuarioDAO udao = new UsuarioDAO();
-		udao.RegisterUser(user);
-		udao.RegisterPlayer(player);
+		ModelFackade.crearUsuario(user);
+		ModelFackade.crearPersonaje(player);
+
 		response.sendRedirect("index.jsp");
 
 	}

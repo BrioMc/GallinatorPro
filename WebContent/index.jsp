@@ -17,13 +17,17 @@
 	media="screen" />
 <title>GallinatorPro</title>
 <jsp:include page="/includes/js.jsp" />
+<jsp:useBean id="SesionPlayer" class="gallinator.bean.SesionPlayer"
+	scope="session" />
 </head>
 <body>
 	<div id="gamebox">
-		<jsp:include page="/includes/loggin.jsp" />
-
-		<div id="panelusuario"><jsp:include
-				page="/includes/keyboard.jsp" /></div>
+		<c:if test="${SesionPlayer.id==0 }">
+			<jsp:include page="/includes/sesion_off.jsp" />
+		</c:if>
+		<c:if test="${SesionPlayer.id!=0 }">
+			<jsp:include page="/includes/sesion_on.jsp" />
+		</c:if>
 		<div class="clear"></div>
 	</div>
 </body>

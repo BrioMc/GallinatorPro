@@ -2,8 +2,8 @@
 <!DOCTYPE dwr PUBLIC "-//GetAhead Limited//DTD Direct Web Remoting 2.0//EN" "http://getahead.org/dwr/dwr20.dtd">
 <dwr>
 	<allow>
-		<create creator="new" javascript="Mapa">
-			<param name="class" value="gallinator.dwr.Mapa" />
+		<create creator="new" javascript="Controlador">
+			<param name="class" value="gallinator.dwr.Controlador" />
 		</create>
 		<convert converter="bean" match="gallinator.tileMap.*" />
 	</allow>
