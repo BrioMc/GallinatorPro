@@ -7,7 +7,7 @@ import gallinator.tileMap.Layers;
 
 public class Controlador {
 	public int[][] arrayMapa() {
-		gallinator.tileMap.Mapa mapa = MapaJson.mapa();
+		gallinator.tileMap.Mapa mapa = MapaJson.mapa(0);
 		Layers[] layerse;
 		layerse = mapa.getLayers();
 		Layers layer = new Layers();

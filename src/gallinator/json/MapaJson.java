@@ -1,27 +1,13 @@
 package gallinator.json;
 
 import gallinator.tileMap.Mapa;
-
-import java.io.File;
-import java.io.IOException;
-
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import gallinator.util.JSON;
 
 public class MapaJson {
-	public static Mapa mapa() {
-		Mapa mapa = new Mapa();
-		try {
-			String File = "D:/Trabajos/Eclipse/Workspace/GallinatorPro/Lv1.json";
-			ObjectMapper mapper = new ObjectMapper();
-			mapa = mapper.readValue(new File(File), Mapa.class);
-		} catch (JsonGenerationException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return mapa;
-	}
+	private static String[] mapas = { "Lv1.json" };
 
+	public static Mapa mapa(int i) {
+		return JSON.read(mapas[i], Mapa.class);
+	}
 
 }
