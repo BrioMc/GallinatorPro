@@ -9,6 +9,26 @@ import java.sql.SQLException;
 
 public class UsuarioDAO extends ConexionDB {
 
+	public void Mueve(int id, int posX, int posY) {
+		try {
+			getConexion();
+			String insert = "update Personaje SET PosX=?, PosY=? where idPersonaje=?";
+			pstmt = conexion.prepareStatement(insert);
+			pstmt.setInt(1, posX);
+			pstmt.setInt(2, posY);
+			pstmt.setInt(3, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getErrorCode());
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			cerrar();
+		}
+	}
+
 	public void RegisterUser(User usuario) {
 		try {
 			getConexion();
@@ -50,6 +70,8 @@ public class UsuarioDAO extends ConexionDB {
 				SesionLogin.setDmgH(resultado.getInt("DmgH"));
 				SesionLogin.setExp(resultado.getInt("Exp"));
 				SesionLogin.setLv(resultado.getInt("Lv"));
+				SesionLogin.setPosY(resultado.getInt("PosY"));
+				SesionLogin.setPosX(resultado.getInt("PosX"));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getErrorCode());

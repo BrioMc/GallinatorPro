@@ -2,29 +2,31 @@ package gallinator.DAO;
 
 import gallinator.bean.SesionPlayer;
 import gallinator.modelo.Personaje;
+import gallinator.modelo.User;
 import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 
-public class PartidaDAO extends ConexionDB {
+public class CombateDAO extends ConexionDB {
 
-	public void savePosition(SesionPlayer usuario) {
+	public void save(SesionPlayer usuario) {
 		try {
-			System.out.println("Entra a guardar");
 			getConexion();
-			String insert = "update personaje set PosX=?,PosY=? where idPersonaje=?";
+			String insert = "insert into usuario(User, Pass, Email) values(?,?,?)";
 			pstmt = conexion.prepareStatement(insert);
-			pstmt.setInt(1, usuario.getPosX());
-			pstmt.setInt(2, usuario.getPosY());
-			pstmt.setInt(3, usuario.getId());
+			pstmt.setInt(1, usuario.getSangre());
+			pstmt.setInt(2, usuario.getMaxSangre());
+			pstmt.setInt(3, usuario.getMana());
+			pstmt.setInt(4, usuario.getMaxMana());
+			pstmt.setInt(5, usuario.getDmgF());
+			pstmt.setInt(6, usuario.getDmgH());
+			pstmt.setInt(7, usuario.getExp());
+			pstmt.setInt(8, usuario.getLv());
 			pstmt.executeUpdate();
-			System.out.println("ejecuta"+usuario.getPosX()+""+usuario.getPosY()+""+usuario.getId());
 		} catch (SQLException e) {
 			System.out.println(e.getErrorCode());
 			e.printStackTrace();
 		} catch (Exception e) {
-
-			System.out.println(e);
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
@@ -53,8 +55,6 @@ public class PartidaDAO extends ConexionDB {
 				SesionLogin.setDmgH(resultado.getInt("DmgH"));
 				SesionLogin.setExp(resultado.getInt("Exp"));
 				SesionLogin.setLv(resultado.getInt("Lv"));
-				SesionLogin.setPosX(resultado.getInt("PosX"));
-				SesionLogin.setPosY(resultado.getInt("PosY"));
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getErrorCode());

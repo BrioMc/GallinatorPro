@@ -15,14 +15,16 @@
 	media="screen" />
 <link rel="stylesheet" type="text/css" href="style/keys.css"
 	media="screen" />
-<title>GallinatorPro</title>
+	
 <jsp:include page="/includes/js.jsp" />
+<title>GallinatorPro</title>
 <jsp:useBean id="SesionPlayer" class="gallinator.bean.SesionPlayer"
 	scope="session" />
 </head>
 <body>
 	<div id="gamebox">
 		<c:if test="${SesionPlayer.id==0 }">
+		<script type="text/javascript" src="js/logg.js"></script>
 			<jsp:include page="/includes/sesion_off.jsp" />
 		</c:if>
 		<c:if test="${SesionPlayer.id!=0 }">

@@ -1,3 +1,24 @@
-.backey{
+.backey {
 	background-image: url("../images/flecha_atras.png");
+}
+
+#keyup {
+	background-image: url('../images/key/up-screen.png');
+}
+#keyright {
+	background-image: url('../images/key/right-screen.png');
+}
+#keydown {
+	background-image: url('../images/key/down-screen.png');
+}
+#keyleft {
+	background-image: url('../images/key/left-screen.png');
+}
+
+.key {
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	background-color: transparent;
+	background-size: 100%;
 }
