@@ -65,43 +65,194 @@ public class Controlador {
 	/**************************** Movimientos ****************************/
 	public boolean[] calculaFlechas(int x, int y) {
 		boolean[] result = { true, true, true, true };
-		// Ladrillos -->2,11,18,9,20,21,19,17
+		// Ladrillos -->2,20,21,19,17,11,18,9
 		// Piedra -->25,26,27,35,43,42,41,33
 		// Objetos -->31,47,40,38,46
 		int pos[][] = arrayMapa();
 		int posX;
 		int posY;
-		int[] blockTileds = { 31, 47, 40, 38, 46, 25, 26, 27, 35, 43, 42, 41,
-				33, 2, 11, 18, 9, 20, 21, 19, 17 };
+		int[] blockTileds = { 28, 44, 36, 45, 37, 31, 2, 47, 40, 38, 46, 25,
+				26, 27, 35, 43, 42, 41, 33, 11, 18, 9, 20, 21, 19, 17 };
 		for (int v = 0; v < blockTileds.length; v++) {
-			// arriba
-			posX = x;
-			posY = y - 1;
-			System.out.println(x+"___"+y);
-			if (blockTileds[v] == pos[posY][posX]) {
-				result[0] = false;
-			}
-
-			// derecha
-			posX = x + 1;
-			posY = y;
-			if (blockTileds[v] == pos[posY][posX]) {
-
-				result[1] = false;
-			}
-
-			// abajo
-			posX = x;
-			posY = y + 1;
-			if (blockTileds[v] == pos[posY][posX]) {
-				result[2] = false;
-			}
-			// izquierda
-			posX = x - 1;
-			posY = y;
-			if (blockTileds[v] == pos[posY][posX]) {
+			if (x == 0) {
 				result[3] = false;
+				if (y == 0) {
+					result[0] = false;
+					// abajo
+					posX = x;
+					posY = y + 1;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[2] = false;
+					}
+					// derecha
+					posX = x + 1;
+					posY = y;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[1] = false;
+					}
+				} else if (y == 17) {
+					result[2] = false;
+					// arriba
+					posX = x;
+					posY = y - 1;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[0] = false;
+					}
+					// derecha
+					posX = x + 1;
+					posY = y;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[1] = false;
+					}
+				}
+				else {
+					// arriba
+					posX = x;
+					posY = y - 1;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[0] = false;
+					}
+					// abajo
+					posX = x;
+					posY = y + 1;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[2] = false;
+					}
+					// derecha
+					posX = x + 1;
+					posY = y;
+					if (blockTileds[v] == pos[posY][posX]) {
+						result[1] = false;
+					}
+				}
+				
+			} else {
+				if (x == 27) {
+					result[1] = false;
+					if (y == 0) {
+						result[0] = false;
+						// abajo
+						posX = x;
+						posY = y + 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[2] = false;
+						}
+						// izquierda
+						posX = x - 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[3] = false;
+						}
+					} 
+					else if (y == 17) {
+						result[2] = false;
+						// arriba
+						posX = x;
+						posY = y - 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[0] = false;
+						}
+						// izquierda
+						posX = x - 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[3] = false;
+						}
+					}
+					else{
+						// arriba
+						posX = x;
+						posY = y - 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[0] = false;
+						}
+						// abajo
+						posX = x;
+						posY = y + 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[2] = false;
+						}
+						// izquierda
+						posX = x - 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[3] = false;
+						}
+					}
+				}
+				else{
+					if(y==0)
+					{
+					result[0]=false;
+						// abajo
+						posX = x;
+						posY = y + 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[2] = false;
+						}
+						// izquierda
+						posX = x - 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[3] = false;
+						}
+						// derecha
+						posX = x + 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[1] = false;
+						}
+					}
+					else if(y==17){
+						result[2]=false;
+						// arriba
+						posX = x;
+						posY = y - 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[0] = false;
+						}
+						// izquierda
+						posX = x - 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[3] = false;
+						}
+						// derecha
+						posX = x + 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[1] = false;
+						}
+					}
+					else{
+						// arriba
+						posX = x;
+						posY = y - 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[0] = false;
+						}
+						// abajo
+						posX = x;
+						posY = y + 1;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[2] = false;
+						}
+						// izquierda
+						posX = x - 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[3] = false;
+						}
+						// derecha
+						posX = x + 1;
+						posY = y;
+						if (blockTileds[v] == pos[posY][posX]) {
+							result[1] = false;
+						}
+					}
+				}
 			}
+
 		}
 
 		return result;
@@ -121,19 +272,15 @@ public class Controlador {
 		HttpServletRequest req = ctx.getHttpServletRequest();
 		HttpServletResponse res = ctx.getHttpServletResponse();
 		req.getSession().setAttribute("SesionPlayer", sesion);
-		try {
-			res.sendRedirect("index.jsp");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
-	public void closeSession(){
+
+	public void closeSession() {
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();
 		HttpSession sesion = req.getSession();
 		sesion.invalidate();
 	}
+
 	public void mueve(int x, int y, int id, String user) {
 		player.setPosX(x);
 		player.setPosY(y);

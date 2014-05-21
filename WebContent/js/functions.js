@@ -16,7 +16,7 @@ function nextstepgame() {
 		Controlador.calculaFlechas(sesion.posX, sesion.posY, function(tp) {
 			flechas = tp;
 			
-			if (flechas[0] = true) {
+			if (flechas[0] == true) {
 				console.log("flecha arriba");
 				flecha = "<button class='key' id='keyup' onclick='movestep(0,-1)'></button>";
 				$('#' + (sesion.posY - 1) + "-" + sesion.posX).append(flecha);
