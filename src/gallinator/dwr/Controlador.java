@@ -1,11 +1,13 @@
 package gallinator.dwr;
 
-import gallinator.DAO.*;
-import gallinator.bean.*;
-import gallinator.json.*;
-import gallinator.tileMap.*;
-
 import java.io.IOException;
+
+import gallinator.DAO.PartidaDAO;
+import gallinator.DAO.UsuarioDAO;
+import gallinator.bean.SesionPlayer;
+import gallinator.json.MapaJson;
+import gallinator.tileMap.Layers;
+import gallinator.tileMap.Mapa;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,17 +41,6 @@ public class Controlador {
 		return arrayTiled;
 	}
 
-	public static Estado status() {
-		Estado estado = new Estado();
-		return estado;
-	}
-
-	public static void guardaPartida() {
-
-		// ObjectMapper mapper = new ObjectMapper();
-		// String json= mapper.writeValueAsString(osesion);
-
-	}
 
 	public SesionPlayer load(String user) {
 		SesionPlayer load = udao.PlayerSesion(user);
@@ -58,9 +49,6 @@ public class Controlador {
 		return load;
 	}
 
-	public void save(SesionPlayer e) {
-		// objeto -> BBDD
-	}
 
 	/**************************** Movimientos ****************************/
 	public boolean[] calculaFlechas(int x, int y) {
@@ -258,6 +246,26 @@ public class Controlador {
 		return result;
 	}
 
+	public void mueve(int x, int y, int id, String user) {
+		player.setPosX(x);
+		player.setPosY(y);
+		player.setId(id);
+		pdao.savePosition(player);
+		saveSesion(user);
+	}
+	/**************************** Guardar y Cargar ****************************/
+	public void modSession(SesionPlayer player){
+		SesionPlayer mod = leerSesion();
+		WebContext ctx = WebContextFactory.get();
+		HttpServletRequest req = ctx.getHttpServletRequest();
+		mod.setDmgF(player.getDmgF());
+		mod.setDmgH(player.getDmgH());
+		mod.setMana(player.getMana());
+		mod.setMaxMana(player.getMaxMana());
+		mod.setSangre(player.getSangre());
+		mod.setMaxSangre(player.getMaxSangre());
+		req.getSession().setAttribute("SesionPlayer", mod);
+	}
 	public SesionPlayer leerSesion() {
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();
@@ -270,7 +278,6 @@ public class Controlador {
 		SesionPlayer sesion = udao.PlayerSesion(user);
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();
-		HttpServletResponse res = ctx.getHttpServletResponse();
 		req.getSession().setAttribute("SesionPlayer", sesion);
 	}
 
@@ -279,13 +286,5 @@ public class Controlador {
 		HttpServletRequest req = ctx.getHttpServletRequest();
 		HttpSession sesion = req.getSession();
 		sesion.invalidate();
-	}
-
-	public void mueve(int x, int y, int id, String user) {
-		player.setPosX(x);
-		player.setPosY(y);
-		player.setId(id);
-		pdao.savePosition(player);
-		saveSesion(user);
 	}
 }

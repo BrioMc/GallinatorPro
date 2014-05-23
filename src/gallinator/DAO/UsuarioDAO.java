@@ -8,6 +8,29 @@ import gallinator.pojo.ConexionDB;
 import java.sql.SQLException;
 
 public class UsuarioDAO extends ConexionDB {
+	public void savePJ(SesionPlayer player){
+		try {
+			getConexion();
+			String insert = "UPDATE personaje SET Sangre=?, Mana=?, MaxSangre=?, MaxMana=?, DmgF=?, DmgH=?, WHERE idPersonaje=?";
+			pstmt = conexion.prepareStatement(insert);
+			pstmt.setInt(1, player.getSangre() );
+			pstmt.setInt(2, player.getMana());
+			pstmt.setInt(3, player.getMaxSangre());
+			pstmt.setInt(4, player.getMaxMana());
+			pstmt.setInt(5, player.getDmgF());
+			pstmt.setInt(6, player.getDmgH());
+			pstmt.setInt(7, player.getId());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getErrorCode());
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			cerrar();
+		}
+	}
 
 	public void Mueve(int id, int posX, int posY) {
 		try {
@@ -54,7 +77,7 @@ public class UsuarioDAO extends ConexionDB {
 		String sql = "select * from personaje where UsuarioFK=?";
 		try {
 			getConexion();
-			pstmt = conexion.prepareStatement(sql);
+				pstmt = conexion.prepareStatement(sql);
 			pstmt.setString(1, user);
 			resultado = pstmt.executeQuery();
 			if (resultado.next()) {
@@ -78,7 +101,10 @@ public class UsuarioDAO extends ConexionDB {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			cerrar();
 		}
+		
 		return SesionLogin;
 	}
 
@@ -103,17 +129,4 @@ public class UsuarioDAO extends ConexionDB {
 		}
 	}
 
-	public void EliminarProducto(String value) {
-		getConexion();
-		try {
-			String where = value;
-			pstmt = conexion.prepareStatement(where);
-			pstmt.setString(1, where);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
 }

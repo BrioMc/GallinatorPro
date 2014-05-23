@@ -17,12 +17,10 @@ function nextstepgame() {
 			flechas = tp;
 			
 			if (flechas[0] == true) {
-				console.log("flecha arriba");
 				flecha = "<button class='key' id='keyup' onclick='movestep(0,-1)'></button>";
 				$('#' + (sesion.posY - 1) + "-" + sesion.posX).append(flecha);
 			}
 			if (flechas[1] == true) {
-				console.log("flecha derecha");
 				flecha = "<button class='key'id='keyright' onclick='movestep(+1,0)'></button>";
 				
 				console.log($('#' + sesion.posY + "-" + (sesion.posX + 1)).append(flecha));
@@ -46,9 +44,8 @@ function nextstepgame() {
 function movestep(x,y) {
 	Controlador.leerSesion(function(tpt) {
 		sesion = tpt;
-		console.log(sesion.posX, sesion.posY - 1, sesion.id);
 		Controlador.mueve(sesion.posX +x, sesion.posY +y, sesion.id,
-				sesion.usuario);
-		nextstepgame();
+				sesion.usuario,function (){nextstepgame();});
+		
 	});
 }
