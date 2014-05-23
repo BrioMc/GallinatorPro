@@ -3,6 +3,14 @@ package gallinator.modelo;
 import java.io.Serializable;
 
 public class Enemigo implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private int id;
+	private String nombre;
+	private String imagen;
+	private int sangre;
+	private int dmg;
+	private int exp;
+	private int points;
 
 	public int getId() {
 		return id;
@@ -52,15 +60,11 @@ public class Enemigo implements Serializable {
 		this.exp = exp;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public int getPoints() {
+		return points;
 	}
 
-	private static final long serialVersionUID = 1L;
-	private int id;
-	private String nombre;
-	private String imagen;
-	private int sangre;
-	private int dmg;
-	private int exp;
+	public void setPoints(int points) {
+		this.points = points;
+	}
 }

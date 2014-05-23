@@ -1,15 +1,17 @@
 package gallinator.modelo;
 
+import gallinator.DAO.EnemigoDAO;
 import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collection;
 
 import org.apache.commons.beanutils.PropertyUtilsBean;
 
 public class ModelFackade {
-
+	/****************************************** Registros ******************************************/
 	// Registro de Usuario
 	public static void crearUsuario(Usuario UsuBean) throws IOException {
 		Usuario usuario = new Usuario();
@@ -40,5 +42,38 @@ public class ModelFackade {
 			e.printStackTrace();
 		}
 		udao.RegisterPlayer(player);
+	}
+
+	/****************************************** Listas ******************************************/
+	// *********Usuario
+	public static Collection<Enemigo> getUsuario(String clausulaWhere) {
+		EnemigoDAO edao = new EnemigoDAO();
+
+		Collection<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
+		return enemigo;
+	}
+
+	// *********Personaje
+	public static Collection<Enemigo> getPersonaje(String clausulaWhere) {
+		EnemigoDAO edao = new EnemigoDAO();
+
+		Collection<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
+		return enemigo;
+	}
+
+	// *********Enemigos
+	public static Collection<Enemigo> getEnemigo(String clausulaWhere) {
+		EnemigoDAO edao = new EnemigoDAO();
+
+		Collection<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
+		return enemigo;
+	}
+
+	// *********Quests
+	public static Collection<Enemigo> getQuest(String clausulaWhere) {
+		EnemigoDAO edao = new EnemigoDAO();
+
+		Collection<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
+		return enemigo;
 	}
 }

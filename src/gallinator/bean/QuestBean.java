@@ -2,7 +2,7 @@ package gallinator.bean;
 
 import java.io.Serializable;
 
-public class Quest implements Serializable {
+public class QuestBean implements Serializable {
 	/**
 	 * 
 	 */
