@@ -1,33 +1,51 @@
 package gallinator.modelo;
 
 public class Personaje {
-	private int idPersonaje;
-	private String usuariofk;
+	private int id;
+	private String usuario;
 	private String alias;
+	private String clase;
 	private int sangre;
+	private int maxSangre;
 	private int mana;
+	private int maxMana;
 	private int dmgF;
 	private int dmgH;
-	private int maxSangre;
-	private int maxMana;
-	private String clase;
 	private int exp;
 	private int lv;
+	private int posX;
+	private int posY;
 
-	public int getIdPersonaje() {
-		return idPersonaje;
+	public int getPosX() {
+		return posX;
 	}
 
-	public void setIdPersonaje(int idPersonaje) {
-		this.idPersonaje = idPersonaje;
+	public void setPosX(int posX) {
+		this.posX = posX;
 	}
 
-	public String getUsuariofk() {
-		return usuariofk;
+	public int getPosY() {
+		return posY;
 	}
 
-	public void setUsuariofk(String usuariofk) {
-		this.usuariofk = usuariofk;
+	public void setPosY(int posY) {
+		this.posY = posY;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public String getAlias() {
@@ -38,6 +56,14 @@ public class Personaje {
 		this.alias = alias;
 	}
 
+	public String getClase() {
+		return clase;
+	}
+
+	public void setClase(String clase) {
+		this.clase = clase;
+	}
+
 	public int getSangre() {
 		return sangre;
 	}
@@ -46,12 +72,28 @@ public class Personaje {
 		this.sangre = sangre;
 	}
 
+	public int getMaxSangre() {
+		return maxSangre;
+	}
+
+	public void setMaxSangre(int maxSangre) {
+		this.maxSangre = maxSangre;
+	}
+
 	public int getMana() {
 		return mana;
 	}
 
 	public void setMana(int mana) {
 		this.mana = mana;
+	}
+
+	public int getMaxMana() {
+		return maxMana;
+	}
+
+	public void setMaxMana(int maxMana) {
+		this.maxMana = maxMana;
 	}
 
 	public int getDmgF() {
@@ -68,30 +110,6 @@ public class Personaje {
 
 	public void setDmgH(int dmgH) {
 		this.dmgH = dmgH;
-	}
-
-	public int getMaxSangre() {
-		return maxSangre;
-	}
-
-	public void setMaxSangre(int maxSangre) {
-		this.maxSangre = maxSangre;
-	}
-
-	public int getMaxMana() {
-		return maxMana;
-	}
-
-	public void setMaxMana(int maxMana) {
-		this.maxMana = maxMana;
-	}
-
-	public String getClase() {
-		return clase;
-	}
-
-	public void setClase(String clase) {
-		this.clase = clase;
 	}
 
 	public int getExp() {

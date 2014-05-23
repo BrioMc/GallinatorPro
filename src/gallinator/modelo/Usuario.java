@@ -1,6 +1,6 @@
 package gallinator.modelo;
 
-public class User {
+public class Usuario {
 	private String user;
 	private String pass;
 	private String email;

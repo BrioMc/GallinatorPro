@@ -1,7 +1,6 @@
 package gallinator.DAO;
 
 import gallinator.bean.SesionPlayer;
-import gallinator.modelo.Personaje;
 import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
@@ -65,12 +64,12 @@ public class PartidaDAO extends ConexionDB {
 		return SesionLogin;
 	}
 
-	public void RegisterPlayer(Personaje player) {
+	public void RegisterPlayer(SesionPlayer player) {
 		try {
 			getConexion();
 			String insert = "insert into personaje(UsuarioFK, Alias, Clase) values(?,?,?)";
 			pstmt = conexion.prepareStatement(insert);
-			pstmt.setString(1, player.getUsuariofk());
+			pstmt.setString(1, player.getUsuario());
 			pstmt.setString(2, player.getAlias());
 			pstmt.setString(3, player.getClase());
 			pstmt.executeUpdate();

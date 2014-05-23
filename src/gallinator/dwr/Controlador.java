@@ -1,7 +1,5 @@
 package gallinator.dwr;
 
-import java.io.IOException;
-
 import gallinator.DAO.PartidaDAO;
 import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
@@ -10,7 +8,6 @@ import gallinator.tileMap.Layers;
 import gallinator.tileMap.Mapa;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.directwebremoting.WebContext;
@@ -264,6 +261,7 @@ public class Controlador {
 		mod.setMaxMana(player.getMaxMana());
 		mod.setSangre(player.getSangre());
 		mod.setMaxSangre(player.getMaxSangre());
+		mod.setExp(player.getExp());
 		req.getSession().setAttribute("SesionPlayer", mod);
 	}
 	public SesionPlayer leerSesion() {
