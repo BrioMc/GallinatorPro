@@ -1,5 +1,6 @@
 package gallinator.servlet;
 
+import gallinator.DAO.PersonajeDAO;
 import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 import gallinator.pojo.ConexionDB;
@@ -42,12 +43,11 @@ public class ControladorLogin extends HttpServlet {
 			if (rs.next()) {
 				con = consul.getConexion().prepareStatement(sql);
 				request.getSession().setAttribute("SesionPlayer", true);
-				UsuarioDAO udao = new UsuarioDAO();
-				SesionPlayer SesionLogin = udao.PlayerSesion(user);
+				PersonajeDAO pdao = new PersonajeDAO();
+				SesionPlayer SesionLogin = pdao.PlayerSesion(user);
 				request.getSession().setAttribute("SesionPlayer", SesionLogin);
 				System.out.println(SesionLogin.getUsuario().toString());
 				response.sendRedirect("index.jsp");
-
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

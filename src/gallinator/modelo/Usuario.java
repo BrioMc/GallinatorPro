@@ -1,9 +1,18 @@
 package gallinator.modelo;
 
 public class Usuario {
+	private int id;
 	private String user;
 	private String pass;
 	private String email;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getUser() {
 		return user;

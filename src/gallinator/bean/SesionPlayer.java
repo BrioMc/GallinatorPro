@@ -19,6 +19,15 @@ public class SesionPlayer implements Serializable {
 	private int lv;
 	private int posX;
 	private int posY;
+	private int score;
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 
 	public int getPosX() {
 		return posX;

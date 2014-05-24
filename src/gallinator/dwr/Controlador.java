@@ -1,6 +1,7 @@
 package gallinator.dwr;
 
 import gallinator.DAO.PartidaDAO;
+import gallinator.DAO.PersonajeDAO;
 import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 import gallinator.json.MapaJson;
@@ -17,6 +18,7 @@ public class Controlador {
 	UsuarioDAO udao = new UsuarioDAO();
 	SesionPlayer player = new SesionPlayer();
 	PartidaDAO pdao = new PartidaDAO();
+	PersonajeDAO perdao = new PersonajeDAO();
 
 	public int[][] arrayMapa() {
 		Mapa mapa = MapaJson.mapa(0);
@@ -40,7 +42,7 @@ public class Controlador {
 
 
 	public SesionPlayer load(String user) {
-		SesionPlayer load = udao.PlayerSesion(user);
+		SesionPlayer load = perdao.PlayerSesion(user);
 
 		// objeto <- BBDD
 		return load;
@@ -273,7 +275,7 @@ public class Controlador {
 	}
 
 	public void saveSesion(String user) {
-		SesionPlayer sesion = udao.PlayerSesion(user);
+		SesionPlayer sesion = perdao.PlayerSesion(user);
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();
 		req.getSession().setAttribute("SesionPlayer", sesion);

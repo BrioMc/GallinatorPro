@@ -14,6 +14,7 @@ public class QuestBean implements Serializable {
 	private String respuesta;
 	private int posX_finish;
 	private int posY_finish;
+	private int points;
 
 	public int getId() {
 		return id;
@@ -69,6 +70,14 @@ public class QuestBean implements Serializable {
 
 	public void setPosY_finish(int posY_finish) {
 		this.posY_finish = posY_finish;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
 }

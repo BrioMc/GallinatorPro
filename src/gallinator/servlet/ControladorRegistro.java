@@ -1,8 +1,8 @@
 package gallinator.servlet;
 
+import gallinator.bean.UsuarioBean;
 import gallinator.modelo.ModelFackade;
 import gallinator.modelo.Personaje;
-import gallinator.modelo.Usuario;
 
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class ControladorRegistro extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		Usuario user = new Usuario();
+		UsuarioBean user = new UsuarioBean();
 		user.setUser(request.getParameter("user"));
 		user.setPass(request.getParameter("pass"));
 		user.setEmail(request.getParameter("email"));
