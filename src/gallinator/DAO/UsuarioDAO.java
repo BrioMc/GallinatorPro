@@ -23,6 +23,7 @@ public class UsuarioDAO extends ConexionDB {
 				usuario.setUser(resultado.getString("User"));
 				usuario.setPass(resultado.getString("Pass"));
 				usuario.setEmail(resultado.getString("Email"));
+				usuario.setPrivilegio(resultado.getString("Privilegio"));
 				lista.add(usuario);
 			}
 		} catch (SQLException ex) {

@@ -20,7 +20,7 @@ public class QuestDAO extends ConexionDB {
 			resultado = pstmt.executeQuery();
 			while (resultado.next()) {
 				Quest quest = new Quest();
-				quest.setId(resultado.getInt("id"));
+				quest.setId(resultado.getInt("idQuest"));
 				quest.setDefinicion(resultado.getString("Definicion"));
 				quest.setPosX_init(resultado.getInt("PosX_init"));
 				quest.setPosY_init(resultado.getInt("PosY_init"));

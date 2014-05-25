@@ -19,7 +19,7 @@ public class EnemigoDAO extends ConexionDB {
 			resultado = pstmt.executeQuery();
 			while (resultado.next()) {
 				Enemigo enemy = new Enemigo();
-				enemy.setId(resultado.getInt("idPersonaje"));
+				enemy.setId(resultado.getInt("idEnemigo"));
 				enemy.setNombre(resultado.getString("Nombre"));	
 				enemy.setImagen(resultado.getString("Imagen"));
 				enemy.setDmg(resultado.getInt("Dmg"));

@@ -1,8 +1,8 @@
 package gallinator.servlet;
 
 import gallinator.DAO.PersonajeDAO;
-import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
+import gallinator.bean.UsuarioBean;
 import gallinator.pojo.ConexionDB;
 
 import java.io.IOException;
@@ -41,13 +41,22 @@ public class ControladorLogin extends HttpServlet {
 			con.setString(2, pwd);
 			rs = con.executeQuery();
 			if (rs.next()) {
-				con = consul.getConexion().prepareStatement(sql);
-				request.getSession().setAttribute("SesionPlayer", true);
-				PersonajeDAO pdao = new PersonajeDAO();
-				SesionPlayer SesionLogin = pdao.PlayerSesion(user);
-				request.getSession().setAttribute("SesionPlayer", SesionLogin);
-				System.out.println(SesionLogin.getUsuario().toString());
-				response.sendRedirect("index.jsp");
+				UsuarioBean usuario = new UsuarioBean();
+				if (rs.getString("Privilegio").equals("Admin")) {
+					usuario.setUser(rs.getString("User"));
+					usuario.setPrivilegio(rs.getString("Privilegio"));
+					request.getSession().setAttribute("SesionAdmin", true);
+					request.getSession().setAttribute("SesionAdmin", usuario);
+					response.sendRedirect("admin/admin_index.jsp");
+
+				} else {
+					request.getSession().setAttribute("SesionPlayer", true);
+					PersonajeDAO pdao = new PersonajeDAO();
+					SesionPlayer SesionLogin = pdao.PlayerSesion(user);
+					request.getSession().setAttribute("SesionPlayer",
+							SesionLogin);
+					response.sendRedirect("index.jsp");
+				}
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

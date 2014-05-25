@@ -1,3 +1,11 @@
+p,a,td {
+	text-align: center;
+}
+table{
+	border: 1px groove;
+	margin: 10px auto;
+}
+
 .wrapper {
 	background: white;
 	margin: auto;
