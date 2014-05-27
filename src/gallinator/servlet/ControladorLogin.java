@@ -43,6 +43,7 @@ public class ControladorLogin extends HttpServlet {
 			if (rs.next()) {
 				UsuarioBean usuario = new UsuarioBean();
 				if (rs.getString("Privilegio").equals("Admin")) {
+					usuario.setId(rs.getInt("id"));
 					usuario.setUser(rs.getString("User"));
 					usuario.setPrivilegio(rs.getString("Privilegio"));
 					request.getSession().setAttribute("SesionAdmin", true);

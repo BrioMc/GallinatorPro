@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	id="WebApp_ID" version="3.0" metadata-complete="true">
+	id="WebApp_ID" metadata-complete="true" version="3.0">
 	<display-name>GallinatorPro</display-name>
 	<servlet>
 		<display-name>DWR Servlet</display-name>
@@ -50,6 +50,14 @@
 		<servlet-name>ControladorRegistro</servlet-name>
 		<url-pattern>/ControladorRegistro</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>ControladorEnemigo</servlet-name>
+		<servlet-class>gallinator.servlet.ControladorEnemigo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControladorEnemigo</servlet-name>
+		<url-pattern>/ControladorEnemigo</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
@@ -59,5 +67,3 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
-
-

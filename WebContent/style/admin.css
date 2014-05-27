@@ -1,7 +1,8 @@
 p,a,td {
 	text-align: center;
 }
-table{
+
+table {
 	border: 1px groove;
 	margin: 10px auto;
 }
@@ -47,9 +48,18 @@ ul.tabs li.active a {
 
 .clr {
 	clear: both;
+	border-top: gray solid 1px;
 }
 
 article {
 	border-top: gray solid 1px;
 	padding: 0 1em;
+}
+
+.enemyimg {
+	width: 64px;
+	height: 64px;
+}
+.inputnumber{
+	width: 50px;
 }

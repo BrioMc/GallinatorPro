@@ -8,6 +8,27 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class QuestDAO extends ConexionDB {
+	public void ingresarQuest(Quest quest) {
+		getConexion();
+		String insert = "INSERT INTO quest (Definicion, PosX_init, PosY_init, Respuesta, PosX_finish, PosY_finish, Points) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		try {
+			pstmt = conexion.prepareStatement(insert);
+
+			pstmt.setString(1, quest.getDefinicion());
+			pstmt.setInt(2, quest.getPosX_init());
+			pstmt.setInt(3, quest.getPosY_init());
+			pstmt.setString(4, quest.getRespuesta());
+			pstmt.setInt(5, quest.getPosX_finish());
+			pstmt.setInt(6, quest.getPosY_finish());
+			pstmt.setInt(7, quest.getPoints());
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			cerrar();
+		}
+	}
 
 	public Collection<Quest> leerQuest(String clausulaWhere) {
 

@@ -14,7 +14,7 @@ public class UsuarioDAO extends ConexionDB {
 
 		try {
 			getConexion();
-			String insert = "select * from usuario" + clausulaWhere;
+			String insert = "select * from usuario " + clausulaWhere;
 			pstmt = conexion.prepareStatement(insert);
 			resultado = pstmt.executeQuery();
 			while (resultado.next()) {
@@ -32,6 +32,29 @@ public class UsuarioDAO extends ConexionDB {
 			cerrar();
 		}
 		return lista;
+	}
+
+	public Usuario Usuario(String clausulaWhere) {
+		Usuario usuario = new Usuario();
+		try {
+			getConexion();
+			String insert = "select * from usuario" + clausulaWhere;
+			pstmt = conexion.prepareStatement(insert);
+			resultado = pstmt.executeQuery();
+			if (resultado.next()) {
+				usuario.setId(resultado.getInt("id"));
+				usuario.setUser(resultado.getString("User"));
+				usuario.setPass(resultado.getString("Pass"));
+				usuario.setEmail(resultado.getString("Email"));
+				usuario.setPrivilegio(resultado.getString("Privilegio"));
+			}
+
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			cerrar();
+		}
+		return usuario;
 	}
 
 	public void RegisterUser(Usuario usuario) {
