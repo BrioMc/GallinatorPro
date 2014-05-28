@@ -16,9 +16,14 @@
 	class="gallinator.listabean.ListaPersonaje" scope="session" />
 <jsp:setProperty name="listaPersonaje" property="clausulaWhere" value="" />
 <head>
+
 <script type="text/javascript" src="../js/jquery-2.0.2.js">
 <!--text-->
 	
+</script>
+<script type="text/javascript" src="../js/functions_admin.js">
+<!--text-->
+		
 </script>
 <link rel="stylesheet" type="text/css" href="../style/admin.css"
 	media="screen" />

@@ -3,7 +3,7 @@ package gallinator.listabean;
 import gallinator.modelo.ModelFackade;
 import gallinator.modelo.Quest;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 public class ListaQuest {
 	private String clausulaWhere = new String();
@@ -16,9 +16,9 @@ public class ListaQuest {
 		this.clausulaWhere = clausulaWhere;
 	}
 
-public Collection<Quest> getQuest() {
+	public ArrayList<Quest> getQuest() {
 
-		Collection<Quest> quest = ModelFackade.getQuest(clausulaWhere);
+		ArrayList<Quest> quest = ModelFackade.getQuest(clausulaWhere);
 		return quest;
 	}
 }

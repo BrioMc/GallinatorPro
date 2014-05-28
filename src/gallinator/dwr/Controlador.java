@@ -2,11 +2,15 @@ package gallinator.dwr;
 
 import gallinator.DAO.PartidaDAO;
 import gallinator.DAO.PersonajeDAO;
+import gallinator.DAO.QuestDAO;
 import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 import gallinator.json.MapaJson;
+import gallinator.modelo.Quest;
 import gallinator.tileMap.Layers;
 import gallinator.tileMap.Mapa;
+
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,8 +20,9 @@ import org.directwebremoting.WebContextFactory;
 
 public class Controlador {
 	UsuarioDAO udao = new UsuarioDAO();
-	SesionPlayer player = new SesionPlayer();
 	PartidaDAO pdao = new PartidaDAO();
+	QuestDAO qdao = new QuestDAO();
+	SesionPlayer player = new SesionPlayer();
 	PersonajeDAO perdao = new PersonajeDAO();
 
 	public int[][] arrayMapa() {
@@ -40,7 +45,6 @@ public class Controlador {
 		return arrayTiled;
 	}
 
-
 	public SesionPlayer load(String user) {
 		SesionPlayer load = perdao.PlayerSesion(user);
 
@@ -48,7 +52,18 @@ public class Controlador {
 		return load;
 	}
 
+	/**************************** Administración ****************************/
+	public void addQuest(Quest quest) {
+		qdao.addQuest(quest);
+	}
 
+	public ArrayList<Quest> listQuest() {
+		ArrayList<Quest> quest =qdao.leerQuest(";");
+		return quest;
+
+	}
+
+	/**************************** Movimientos ****************************/
 	/**************************** Movimientos ****************************/
 	public boolean[] calculaFlechas(int x, int y) {
 		boolean[] result = { true, true, true, true };
@@ -91,8 +106,7 @@ public class Controlador {
 					if (blockTileds[v] == pos[posY][posX]) {
 						result[1] = false;
 					}
-				}
-				else {
+				} else {
 					// arriba
 					posX = x;
 					posY = y - 1;
@@ -112,7 +126,7 @@ public class Controlador {
 						result[1] = false;
 					}
 				}
-				
+
 			} else {
 				if (x == 27) {
 					result[1] = false;
@@ -130,8 +144,7 @@ public class Controlador {
 						if (blockTileds[v] == pos[posY][posX]) {
 							result[3] = false;
 						}
-					} 
-					else if (y == 17) {
+					} else if (y == 17) {
 						result[2] = false;
 						// arriba
 						posX = x;
@@ -145,8 +158,7 @@ public class Controlador {
 						if (blockTileds[v] == pos[posY][posX]) {
 							result[3] = false;
 						}
-					}
-					else{
+					} else {
 						// arriba
 						posX = x;
 						posY = y - 1;
@@ -166,11 +178,9 @@ public class Controlador {
 							result[3] = false;
 						}
 					}
-				}
-				else{
-					if(y==0)
-					{
-					result[0]=false;
+				} else {
+					if (y == 0) {
+						result[0] = false;
 						// abajo
 						posX = x;
 						posY = y + 1;
@@ -189,9 +199,8 @@ public class Controlador {
 						if (blockTileds[v] == pos[posY][posX]) {
 							result[1] = false;
 						}
-					}
-					else if(y==17){
-						result[2]=false;
+					} else if (y == 17) {
+						result[2] = false;
 						// arriba
 						posX = x;
 						posY = y - 1;
@@ -210,8 +219,7 @@ public class Controlador {
 						if (blockTileds[v] == pos[posY][posX]) {
 							result[1] = false;
 						}
-					}
-					else{
+					} else {
 						// arriba
 						posX = x;
 						posY = y - 1;
@@ -252,8 +260,9 @@ public class Controlador {
 		pdao.savePosition(player);
 		saveSesion(user);
 	}
+
 	/**************************** Guardar y Cargar ****************************/
-	public void modSession(SesionPlayer player){
+	public void modSession(SesionPlayer player) {
 		SesionPlayer mod = leerSesion();
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();
@@ -266,6 +275,7 @@ public class Controlador {
 		mod.setExp(player.getExp());
 		req.getSession().setAttribute("SesionPlayer", mod);
 	}
+
 	public SesionPlayer leerSesion() {
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();

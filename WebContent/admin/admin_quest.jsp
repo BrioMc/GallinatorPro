@@ -22,6 +22,11 @@
 <!--text-->
 	
 </script>
+<jsp:include page="../includes/js_admin.jsp" />
+<script type="text/javascript" src="../js/functions_admin.js">
+<!--text-->
+	
+</script>
 <link rel="stylesheet" type="text/css" href="../style/admin.css"
 	media="screen" />
 <title>GallinatorPro</title>
@@ -42,7 +47,7 @@
 		</ul>
 		<div class="clr"></div>
 		<section class="block">
-			<table>
+			<table id="lista_quest">
 				<tr>
 					<th>Definicion</th>
 					<th>Inicio X</th>
@@ -52,6 +57,7 @@
 					<th>Final Y</th>
 					<th>Puntos</th>
 					<th>Seleccion</th>
+					<th>Modificar</th>
 				</tr>
 				<c:forEach var="quest" items="${listaQuest.quest}">
 					<tr>
@@ -64,6 +70,7 @@
 						<td>${quest.points}</td>
 						<td><input type="checkbox" name="seleccion[]"
 							value="${quest.id}" /></td>
+						<td><button>Modificar</button></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -72,33 +79,31 @@
 				<form action="ControladorQuest" method="post">
 					<table>
 						<tr>
-							<td colspan="2">Definición :</td>
-							<td colspan="2"><textarea name="definicion" rows="" cols=""><!-- text --></textarea></td>
+							<th>Definicion</th>
+							<th>Inicio X</th>
+							<th>Inicio Y</th>
+							<th>Recompensa</th>
+							<th>Final X</th>
+							<th>Final Y</th>
+							<th>Puntos</th>
 						</tr>
 						<tr>
-							<td>Inicio X :</td>
-							<td><input type="number" name="posX_init" /></td>
-							<td>Inicio Y :</td>
-							<td><input type="number" name="posY_init" /></td>
+							<td><textarea name="definicion" rows="" cols=""><!-- text --></textarea></td>
+							<td><input class="inputnumber" type="number"
+								name="posX_init" /></td>
+							<td><input class="inputnumber" type="number"
+								name="posY_init" /></td>
+							<td><textarea name="resultado" rows="" cols=""><!-- text --></textarea></td>
+							<td><input class="inputnumber" type="number"
+								name="posX_finish" /></td>
+							<td><input class="inputnumber" type="number"
+								name="posY_finish" /></td>
+							<td><input class="inputnumber" type="number" name="points"
+								rows="" cols="" /></td>
+							<td><input type="hidden" name="id" value="null" /></td>
+							<td><input type="submit" name="Añadir" value="Añadir" /></td>
 						</tr>
-						<tr>
-							<td colspan="2">Resultado :</td>
-							<td colspan="2"><textarea name="resultado" rows="" cols=""><!-- text --></textarea></td>
-						</tr>
-						<tr>
-							<td>Final X :</td>
-							<td><input type="number" name="posX_finish" /></td>
-							<td>Final Y :</td>
-							<td><input type="number" name="posY_finish" /></td>
-						</tr>
-						<tr>
-							<td>Puntos :</td>
-							<td><input type="number" name="points" rows="" cols="" /></td>
-						</tr>
-						<tr>
-							<td><input type="hidden" name="id" value="null"/></td>
-							<td><input type="submit" name="Añadir" value="añadir" /></td>
-						</tr>
+
 					</table>
 				</form>
 			</div>

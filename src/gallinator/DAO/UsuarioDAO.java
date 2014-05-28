@@ -5,12 +5,11 @@ import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class UsuarioDAO extends ConexionDB {
-	public Collection<Usuario> leerUsuario(String clausulaWhere) {
+	public ArrayList<Usuario> leerUsuario(String clausulaWhere) {
 
-		Collection<Usuario> lista = new ArrayList<Usuario>();
+		ArrayList<Usuario> lista = new ArrayList<Usuario>();
 
 		try {
 			getConexion();

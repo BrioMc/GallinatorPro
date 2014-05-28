@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class QuestDAO extends ConexionDB {
-	public void ingresarQuest(Quest quest) {
+	public void addQuest(Quest quest) {
 		getConexion();
 		String insert = "INSERT INTO quest (Definicion, PosX_init, PosY_init, Respuesta, PosX_finish, PosY_finish, Points) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try {
@@ -30,9 +30,9 @@ public class QuestDAO extends ConexionDB {
 		}
 	}
 
-	public Collection<Quest> leerQuest(String clausulaWhere) {
+	public ArrayList<Quest> leerQuest(String clausulaWhere) {
 
-		Collection<Quest> lista = new ArrayList<Quest>();
+		ArrayList<Quest> lista = new ArrayList<Quest>();
 
 		try {
 			getConexion();

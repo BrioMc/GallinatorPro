@@ -6,7 +6,6 @@ import gallinator.pojo.ConexionDB;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -112,9 +111,9 @@ public class EnemigoDAO extends ConexionDB {
 
 	}
 
-	public Collection<Enemigo> leerEnemigo(String clausulaWhere) {
+	public ArrayList<Enemigo> leerEnemigo(String clausulaWhere) {
 
-		Collection<Enemigo> lista = new ArrayList<Enemigo>();
+		ArrayList<Enemigo> lista = new ArrayList<Enemigo>();
 
 		try {
 			getConexion();

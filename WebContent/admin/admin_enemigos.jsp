@@ -20,6 +20,12 @@
 <!--text-->
 	
 </script>
+<script type="text/javascript" src="../js/functions_admin.js">
+<!--text-->
+	
+</script>
+
+<jsp:include page="../includes/js_admin.jsp" />
 <link rel="stylesheet" type="text/css" href="../style/admin.css"
 	media="screen" />
 <title>GallinatorPro</title>
@@ -66,7 +72,7 @@
 				</c:forEach>
 			</table>
 			<div id="addenemy">
-			<h1>Añadir Enemigo</h1>
+				<h1>Añadir Enemigo</h1>
 				<table>
 					<tr>
 						<th>Nombre</th>

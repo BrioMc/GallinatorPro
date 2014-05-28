@@ -7,5 +7,6 @@
 		</create>
 		<convert converter="bean" match="gallinator.tileMap.*" />
 		<convert converter="bean" match="gallinator.bean.*" />
+		<convert converter="bean" match="gallinator.modelo.*" />
 	</allow>
 </dwr>

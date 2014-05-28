@@ -17,7 +17,13 @@
 <jsp:setProperty name="listaUsuario" property="clausulaWhere"
 	value="where id!=1" />
 <head>
+
+<jsp:include page="../includes/js_admin.jsp" />
 <script type="text/javascript" src="../js/jquery-2.0.2.js">
+<!--text-->
+	
+</script>
+<script type="text/javascript" src="../js/functions_admin.js">
 <!--text-->
 	
 </script>

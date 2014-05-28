@@ -9,13 +9,14 @@ import gallinator.bean.UsuarioBean;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Collection;
+import java.util.ArrayList;
 
 import org.apache.commons.beanutils.PropertyUtilsBean;
 
 public class ModelFackade {
 	private static UsuarioDAO udao = new UsuarioDAO();
 	private static PersonajeDAO perdao = new PersonajeDAO();
+
 	/****************************************** Registros ******************************************/
 	// Registro de Usuario
 	public static void crearUsuario(UsuarioBean UsuBean) throws IOException {
@@ -49,33 +50,33 @@ public class ModelFackade {
 
 	/****************************************** Listas ******************************************/
 	// *********Usuario
-	public static Collection<Usuario> getUsuario(String clausulaWhere) {
+	public static ArrayList<Usuario> getUsuario(String clausulaWhere) {
 		UsuarioDAO udao = new UsuarioDAO();
 
-		Collection<Usuario> usuario = udao.leerUsuario(clausulaWhere);
+		ArrayList<Usuario> usuario = udao.leerUsuario(clausulaWhere);
 		return usuario;
 	}
 
 	// *********Personaje
-	public static Collection<Personaje> getPersonaje(String clausulaWhere) {
+	public static ArrayList<Personaje> getPersonaje(String clausulaWhere) {
 		PersonajeDAO pdao = new PersonajeDAO();
 
-		Collection<Personaje> personaje = pdao.leerPersonaje(clausulaWhere);
+		ArrayList<Personaje> personaje = pdao.leerPersonaje(clausulaWhere);
 		return personaje;
 	}
 
 	// *********Enemigos
-	public static Collection<Enemigo> getEnemigo(String clausulaWhere) {
+	public static ArrayList<Enemigo> getEnemigo(String clausulaWhere) {
 		EnemigoDAO edao = new EnemigoDAO();
-		Collection<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
+		ArrayList<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
 		return enemigo;
 	}
 
 	// *********Quests
-	public static Collection<Quest> getQuest(String clausulaWhere) {
+	public static ArrayList<Quest> getQuest(String clausulaWhere) {
 		QuestDAO qdao = new QuestDAO();
 
-		Collection<Quest> quest = qdao.leerQuest(clausulaWhere);
+		ArrayList<Quest> quest = qdao.leerQuest(clausulaWhere);
 		return quest;
 	}
 }

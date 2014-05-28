@@ -6,7 +6,6 @@ import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class PersonajeDAO extends ConexionDB {
 	public void savePJ(SesionPlayer player) {
@@ -53,9 +52,9 @@ public class PersonajeDAO extends ConexionDB {
 		}
 	}
 
-	public Collection<Personaje> leerPersonaje(String clausulaWhere) {
+	public ArrayList<Personaje> leerPersonaje(String clausulaWhere) {
 
-		Collection<Personaje> lista = new ArrayList<Personaje>();
+		ArrayList<Personaje> lista = new ArrayList<Personaje>();
 
 		try {
 			getConexion();
