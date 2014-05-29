@@ -69,13 +69,14 @@
 						<td>${quest.posY_finish}</td>
 						<td>${quest.points}</td>
 						<td><input type="checkbox" name="seleccion[]"
-							value="${quest.id}" /></td>
-						<td><button>Modificar</button></td>
+							value="${quest.idQuest}" /></td>
+						<td><button onclick="modQuest(${quest.idQuest})">Modificar</button></td>
 					</tr>
 				</c:forEach>
 			</table>
 
 			<div id="addquest">
+			<h1>Añadir/Modificar Quest</h1>
 				<form action="ControladorQuest" method="post">
 					<table>
 						<tr>
@@ -100,7 +101,8 @@
 								name="posY_finish" /></td>
 							<td><input class="inputnumber" type="number" name="points"
 								rows="" cols="" /></td>
-							<td><input type="hidden" name="id" value="null" /></td>
+							<td><input type="hidden" name="idQuest" id="idQuest"
+								value="null" /></td>
 							<td><input type="submit" name="Añadir" value="Añadir" /></td>
 						</tr>
 

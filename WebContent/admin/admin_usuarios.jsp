@@ -42,8 +42,8 @@
 		<ul class="tabs">
 			<li class="active"><a href="admin_usuarios.jsp">Usuarios</a></li>
 			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
-			<li><a href="#enemigos">Enemigos</a></li>
-			<li><a href="#quest">Quests</a></li>
+			<li><a href="admin_enemigos.jsp">Enemigos</a></li>
+			<li><a href="admin_quest.jsp">Quests</a></li>
 		</ul>
 		<div class="clr"></div>
 		<table>

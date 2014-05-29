@@ -57,8 +57,16 @@ public class Controlador {
 		qdao.addQuest(quest);
 	}
 
+	public Quest seeQuest(int id) {
+		Quest quest=qdao.takeQuest(id);
+		return quest;
+	}
+	public void modQuest(Quest quest) {
+		qdao.modQuest(quest);
+	}
+
 	public ArrayList<Quest> listQuest() {
-		ArrayList<Quest> quest =qdao.leerQuest(";");
+		ArrayList<Quest> quest = qdao.leerQuest(";");
 		return quest;
 
 	}

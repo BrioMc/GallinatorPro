@@ -1,10 +1,13 @@
 p,a,td {
 	text-align: center;
 }
-
+h1{
+	background-color: #565;
+}
 table {
 	border: 1px groove;
 	margin: 10px auto;
+	width: 100%;
 }
 
 .wrapper {
@@ -62,4 +65,7 @@ article {
 }
 .inputnumber{
 	width: 50px;
+}
+#addquest{
+	display: none;
 }

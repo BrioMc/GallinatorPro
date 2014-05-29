@@ -7,7 +7,7 @@ public class QuestBean implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private int id;
+	private int idQuest;
 	private String definicion;
 	private int posX_init;
 	private int posY_init;
@@ -16,12 +16,17 @@ public class QuestBean implements Serializable {
 	private int posY_finish;
 	private int points;
 
-	public int getId() {
-		return id;
+
+	public int getIdQuest() {
+		return idQuest;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdQuest(int idQuest) {
+		this.idQuest = idQuest;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public String getDefinicion() {

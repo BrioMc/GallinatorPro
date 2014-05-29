@@ -25,44 +25,6 @@
 	<c:redirect url="../index.jsp" />
 </c:if>
 <body>
-	<section class="wrapper">
-		<h1>Administración</h1>
-		<ul class="tabs">
-			<li><a href="admin_usuarios.jsp">Usuarios</a></li>
-			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
-			<li><a href="#enemigos">Enemigos</a></li>
-			<li><a href="#quest">Quests</a></li>
-		</ul>
-		<div class="clr"></div>
-		<section class="block">
-			<article id="usuarios">
-				<jsp:include page="admin_usuarios.jsp"></jsp:include>
-			</article>
-			<article id="jugadores">
-				<jsp:include page="admin_jugadores.jsp"></jsp:include>
-			</article>
-			<article id="enemigos">
-				<jsp:include page="admin_enemigos.jsp"></jsp:include>
-			</article>
-			<article id="quest">
-				<jsp:include page="admin_quest.jsp"></jsp:include>
-			</article>
-		</section>
-	</section>
-</body>
-<script type="text/javascript">
-	$(function() {
-		$('ul.tabs li:first').addClass('active');
-		$('.block article').hide();
-		$('.block article:first').show();
-		$('ul.tabs li').on('click', function() {
-			$('ul.tabs li').removeClass('active');
-			$(this).addClass('active')
-			$('.block article').hide();
-			var activeTab = $(this).find('a').attr('href');
-			$(activeTab).show();
-		});
-	})
-</script>
+	<jsp:include page="admin_usuarios.jsp"></jsp:include></body>
 	</html>
 </jsp:root>

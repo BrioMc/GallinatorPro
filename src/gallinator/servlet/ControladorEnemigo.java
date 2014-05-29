@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ControladorEnemigo
  */
-@WebServlet("/ControladorEnemigo")
 public class ControladorEnemigo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +43,7 @@ public class ControladorEnemigo extends HttpServlet {
 
 		String ubicacion = request.getServletContext().getRealPath("");
 		edao.añadirEnemigo(request,ubicacion);
-		response.sendRedirect("admin/admin_index.jsp");
+		response.sendRedirect("admin/admin_enemigos.jsp");
 	}
 
 }
