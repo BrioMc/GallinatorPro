@@ -1,4 +1,18 @@
+
 /*****************************Quest*****************************/
+function closeSession(){
+	Controlador.closeSession(function(){location.reload();});
+}
+/*
+  function showForm(){
+	if($('#addquest').is(':visible')){
+		$('#addquest').hide();
+	}
+	else{
+		$('#addquest').show();
+	}
+}
+*/
 function recallQuest() {
 	Controlador.listQuest(function(tpt){
 		trs1 = $('#lista_quest tr').length;
@@ -8,7 +22,8 @@ function recallQuest() {
 	    {
 	        $("#lista_quest tr:last").remove();
 	    }}
-		$.each(tpt, function(i) {console.log(tpt[i]);
+		$.each(tpt, function(i) {
+			console.log(tpt[i]);
 			$nuevodiv= $('<tr><td>'+tpt[i].definicion+'</td><td>'+tpt[i].posX_init+'</td><td>'+tpt[i].posY_init+'</td><td>'+tpt[i].respuesta+'</td><td>'+tpt[i].posX_finish+'</td><td>'+tpt[i].posY_finish+'</td><td>'+tpt[i].points+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].idQuest+'" /></td><td><button>Modificar</button></td></tr>');
 			$('#lista_quest').append($nuevodiv);
 		});
@@ -25,16 +40,14 @@ function clearForm(){
 	$("input[name=points]").val("");
 	$('#idQuest').val(null);
 }
-function showForm(){
-	if($('#addquest').is(':visible')){
+
+function modQuest(id){	
+	if(id==$('#idQuest').val() && $('#addquest').is(':visible')){
 		$('#addquest').hide();
-	}
+		}
 	else{
 		$('#addquest').show();
 	}
-}
-function modQuest(id){
-	showForm();
 	Controlador.seeQuest(id, function(quest){
 		$("textarea[name=definicion]").val(quest.definicion);
 		$("input[name=posX_init]").val(quest.posX_init);
@@ -65,5 +78,12 @@ function addQuest() {
 	});}
 	clearForm();
 }
-
+function deleteQuest(id){
+	//Seleccionar los que se desean borrar
+	arraySelect=$("input[name='seleccion[]']");
+	$.each(arraySelect, function(i)
+			{
+				Controlador.deleteQuest(arraySelect[i].value,recallQuest());
+			});
+}
 /*****************************Enemigos*****************************/

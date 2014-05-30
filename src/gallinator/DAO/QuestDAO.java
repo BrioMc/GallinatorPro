@@ -28,7 +28,20 @@ public class QuestDAO extends ConexionDB {
 			cerrar();
 		}
 	}
-
+	public void delQuest(int id) {
+		getConexion();
+		String insert = "delete from quest where idQuest=?";
+		try {
+			pstmt = conexion.prepareStatement(insert);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			cerrar();
+		}
+	}
 	public void modQuest(Quest quest) {
 
 		String insert = "update quest set Definicion=?, PosX_init=?, PosY_init=?, Respuesta=?, PosX_finish=?, PosY_finish=?, Points=? where idQuest=?";

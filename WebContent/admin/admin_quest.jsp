@@ -44,6 +44,9 @@
 			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
 			<li><a href="admin_enemigos.jsp">Enemigos</a></li>
 			<li class="active"><a href="admin_quest.jsp">Quests</a></li>
+			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
+					Sesion</a></li>
+
 		</ul>
 		<div class="clr"></div>
 		<section class="block">
@@ -75,8 +78,12 @@
 				</c:forEach>
 			</table>
 
+			<ul class="tabs">
+				<li><button>Añadir</button></li>
+				<li><button>Borrar Seleccion</button></li>
+			</ul>
 			<div id="addquest">
-			<h1>Añadir/Modificar Quest</h1>
+				<h1>Añadir/Modificar Quest</h1>
 				<form action="ControladorQuest" method="post">
 					<table>
 						<tr>

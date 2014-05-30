@@ -64,7 +64,9 @@ public class Controlador {
 	public void modQuest(Quest quest) {
 		qdao.modQuest(quest);
 	}
-
+	public void deleteQuest(int id){
+		qdao.delQuest(id);
+	}
 	public ArrayList<Quest> listQuest() {
 		ArrayList<Quest> quest = qdao.leerQuest(";");
 		return quest;

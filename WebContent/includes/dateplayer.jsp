@@ -22,6 +22,7 @@
 			<td>${SesionPlayer.dmgH }</td>
 		</tr>
 	</table>
+	<button onclick="closeSession()">Cerrar Sesión</button>
 </div>
 
 

@@ -5,6 +5,9 @@ function emptytd() {
 		}
 	}
 }
+function closeSession(){
+	Controlador.closeSession(function(){location.reload();});
+}
 function nextstepgame() {
 	emptytd();
 	Controlador.arrayMapa(function(tpt) {
