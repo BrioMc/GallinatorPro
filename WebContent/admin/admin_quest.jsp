@@ -79,7 +79,7 @@
 			</table>
 
 			<ul class="tabs">
-				<li><button onclick="showForm()">Añadir</button></li>
+				<li><button onclick="showFormQuest()">Añadir</button></li>
 				<li><button onclick="deleteQuest()">Borrar Seleccion</button></li>
 			</ul>
 			<div id="addquest">

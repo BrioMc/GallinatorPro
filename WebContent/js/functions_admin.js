@@ -1,9 +1,8 @@
-
-/*****************************Quest*****************************/
 function closeSession(){
 	Controlador.closeSession(function(){location.reload();});
 }
-  function showForm(){
+/*****************************Quest*****************************/
+function showFormQuest(){
 	  clearForm();
 	if($('#addquest').is(':visible')){
 		$('#addquest').hide();
@@ -38,7 +37,6 @@ function clearForm(){
 	$("input[name=points]").val("");
 	$('#idQuest').val(null);
 }
-
 function modQuest(id){	
 	if(id==$('#idQuest').val() && $('#addquest').is(':visible')){
 		$('#addquest').hide();
@@ -94,3 +92,12 @@ function deleteQuest(){
 	}
 }
 /*****************************Enemigos*****************************/
+function showForm(){
+	  clearForm();
+	if($('#addenemy').is(':visible')){
+		$('#addenemy').hide();
+	}
+	else{
+		$('#addenemy').show();
+	}
+}
