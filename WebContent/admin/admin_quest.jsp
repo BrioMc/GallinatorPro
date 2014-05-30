@@ -59,7 +59,7 @@
 					<th>Final X</th>
 					<th>Final Y</th>
 					<th>Puntos</th>
-					<th>Seleccion</th>
+					<th>Borrar</th>
 					<th>Modificar</th>
 				</tr>
 				<c:forEach var="quest" items="${listaQuest.quest}">
@@ -79,42 +79,38 @@
 			</table>
 
 			<ul class="tabs">
-				<li><button>Añadir</button></li>
-				<li><button>Borrar Seleccion</button></li>
+				<li><button onclick="showForm()">Añadir</button></li>
+				<li><button onclick="deleteQuest()">Borrar Seleccion</button></li>
 			</ul>
 			<div id="addquest">
 				<h1>Añadir/Modificar Quest</h1>
-				<form action="ControladorQuest" method="post">
-					<table>
-						<tr>
-							<th>Definicion</th>
-							<th>Inicio X</th>
-							<th>Inicio Y</th>
-							<th>Recompensa</th>
-							<th>Final X</th>
-							<th>Final Y</th>
-							<th>Puntos</th>
-						</tr>
-						<tr>
-							<td><textarea name="definicion" rows="" cols=""><!-- text --></textarea></td>
-							<td><input class="inputnumber" type="number"
-								name="posX_init" /></td>
-							<td><input class="inputnumber" type="number"
-								name="posY_init" /></td>
-							<td><textarea name="resultado" rows="" cols=""><!-- text --></textarea></td>
-							<td><input class="inputnumber" type="number"
-								name="posX_finish" /></td>
-							<td><input class="inputnumber" type="number"
-								name="posY_finish" /></td>
-							<td><input class="inputnumber" type="number" name="points"
-								rows="" cols="" /></td>
-							<td><input type="hidden" name="idQuest" id="idQuest"
-								value="null" /></td>
-							<td><input type="submit" name="Añadir" value="Añadir" /></td>
-						</tr>
+				<table>
+					<tr>
+						<th>Definicion</th>
+						<th>Inicio X</th>
+						<th>Inicio Y</th>
+						<th>Recompensa</th>
+						<th>Final X</th>
+						<th>Final Y</th>
+						<th>Puntos</th>
+					</tr>
+					<tr>
+						<td><textarea name="definicion" rows="" cols=""><!-- text --></textarea></td>
+						<td><input class="inputnumber" type="number" name="posX_init" /></td>
+						<td><input class="inputnumber" type="number" name="posY_init" /></td>
+						<td><textarea name="resultado" rows="" cols=""><!-- text --></textarea></td>
+						<td><input class="inputnumber" type="number"
+							name="posX_finish" /></td>
+						<td><input class="inputnumber" type="number"
+							name="posY_finish" /></td>
+						<td><input class="inputnumber" type="number" name="points"
+							rows="" cols="" /></td>
+						<td><input type="hidden" name="idQuest" id="idQuest"
+							value="" /></td>
+						<td><input type="button" value="Añadir/Modificar" onclick="addQuest()" /></td>
+					</tr>
 
-					</table>
-				</form>
+				</table>
 			</div>
 		</section>
 	</section>

@@ -1,9 +1,11 @@
 p,a,td {
 	text-align: center;
 }
-h1{
+
+h1 {
 	background-color: #565;
 }
+
 table {
 	border: 1px groove;
 	margin: 10px auto;
@@ -63,9 +65,12 @@ article {
 	width: 64px;
 	height: 64px;
 }
-.inputnumber{
+
+.inputnumber {
 	width: 50px;
 }
-#addquest{
+
+#addquest {
+	clear: both;
 	display: none;
 }

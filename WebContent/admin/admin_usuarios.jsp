@@ -44,7 +44,8 @@
 			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
 			<li><a href="admin_enemigos.jsp">Enemigos</a></li>
 			<li><a href="admin_quest.jsp">Quests</a></li>
-			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar Sesion</a></li>
+			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
+					Sesion</a></li>
 		</ul>
 		<div class="clr"></div>
 		<table>
@@ -52,7 +53,7 @@
 				<th>Usuario</th>
 				<th>Pass</th>
 				<th>Email</th>
-				<th>Selección</th>
+				<th>Borrar</th>
 			</tr>
 			<c:forEach var="usuario" items="${listaUsuario.usuario}">
 				<tr>
@@ -64,6 +65,21 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<div id="moduser">
+			<h1>Modificar User</h1>
+			<table>
+				<tr>
+					<th>Usuario</th>
+					<th>Pass</th>
+					<th>Email</th>
+				</tr>
+				<tr>
+					<td><input name="user" type="text"/></td>
+					<td><input name="pass" type="password"/></td>
+					<td><input name="email" type="text"/></td>
+				</tr>
+			</table>
+		</div>
 	</section>
 </body>
 	</html>
