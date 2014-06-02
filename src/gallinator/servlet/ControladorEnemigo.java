@@ -42,6 +42,7 @@ public class ControladorEnemigo extends HttpServlet {
 		EnemigoDAO edao = new EnemigoDAO();
 
 		String ubicacion = request.getServletContext().getRealPath("");
+		System.out.println("Entra aquí");
 		edao.añadirEnemigo(request,ubicacion);
 		response.sendRedirect("admin/admin_enemigos.jsp");
 	}

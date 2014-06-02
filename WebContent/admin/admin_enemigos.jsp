@@ -43,11 +43,12 @@
 			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
 			<li class="active"><a href="admin_enemigos.jsp">Enemigos</a></li>
 			<li><a href="admin_quest.jsp">Quests</a></li>
-			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar Sesion</a></li>
+			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
+					Sesion</a></li>
 		</ul>
 		<div class="clr"></div>
 		<section class="block">
-			<table>
+			<table id="list_enemy">
 				<tr>
 					<th>Nombre</th>
 					<th>Imagen</th>
@@ -61,19 +62,23 @@
 				<c:forEach var="enemigo" items="${listaEnemigo.enemigo}">
 					<tr>
 						<td>${enemigo.nombre}</td>
-						<td><img class="enemyimg " src="${enemigo.imagen}" /></td>
+						<td><img class="enemyimg " src="../${enemigo.imagen}"></img></td>
 						<td>${enemigo.dmg}</td>
 						<td>${enemigo.sangre}</td>
 						<td>${enemigo.exp}</td>
 						<td>${enemigo.points}</td>
 						<td><input type="checkbox" name="seleccion[]"
 							value="${enemigo.id}" /></td>
-						<td><button>Modificar</button></td>
+						<td><button onclick="modEnemy(${enemigo.id})">Modificar</button></td>
 					</tr>
 				</c:forEach>
 			</table>
+			<ul class="tabs">
+				<li><button onclick="showFormEnemy()">Añadir</button></li>
+				<li><button onclick="deleteEnemy()">Borrar Seleccion</button></li>
+			</ul>
 			<div id="addenemy">
-				<h1>Añadir Enemigo</h1>
+				<h1>Añadir/Modificar Enemigo</h1>
 				<table>
 					<tr>
 						<th>Nombre</th>
@@ -86,15 +91,17 @@
 					<tr>
 						<form action="../ControladorEnemigo" method="post"
 							enctype="multipart/form-data">
+							<input type="hidden" name="idEnemy" value="null" />
 							<td><input type="text" name="nombre" size="20" /></td>
 							<td><div id="cajaimagen">
 									<!-- text -->
 								</div> <input type="file" id="files" name="files[]" accept="image/*" /></td>
-							<td><input type="text" name="daño" class="inputnumber" /></td>
+							<td><input type="text" name="dmg" class="inputnumber" /></td>
 							<td><input type="text" name="sangre" class="inputnumber" /></td>
 							<td><input type="text" name="exp" class="inputnumber" /></td>
 							<td><input type="text" name="points" class="inputnumber" /></td>
-							<td><input type="submit" value="Añadir" class="inputnumber" /></td>
+							<td><input type="submit" value="Añadir/Modificar"
+								class="inputnumber" /></td>
 						</form>
 					</tr>
 				</table>

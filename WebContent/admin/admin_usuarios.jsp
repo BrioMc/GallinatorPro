@@ -74,9 +74,10 @@
 					<th>Email</th>
 				</tr>
 				<tr>
-					<td><input name="user" type="text"/></td>
-					<td><input name="pass" type="password"/></td>
-					<td><input name="email" type="text"/></td>
+					<td><input name="user" type="text" /></td>
+					<td><input name="pass" type="password" /></td>
+					<td><input name="email" type="text" /></td>
+					<td><input type="button" value="Modificar" /></td>
 				</tr>
 			</table>
 		</div>

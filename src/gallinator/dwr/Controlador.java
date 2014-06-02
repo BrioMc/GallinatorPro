@@ -1,11 +1,13 @@
 package gallinator.dwr;
 
+import gallinator.DAO.EnemigoDAO;
 import gallinator.DAO.PartidaDAO;
 import gallinator.DAO.PersonajeDAO;
 import gallinator.DAO.QuestDAO;
 import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 import gallinator.json.MapaJson;
+import gallinator.modelo.Enemigo;
 import gallinator.modelo.Quest;
 import gallinator.tileMap.Layers;
 import gallinator.tileMap.Mapa;
@@ -24,6 +26,7 @@ public class Controlador {
 	QuestDAO qdao = new QuestDAO();
 	SesionPlayer player = new SesionPlayer();
 	PersonajeDAO perdao = new PersonajeDAO();
+	EnemigoDAO ndao = new EnemigoDAO();
 
 	public int[][] arrayMapa() {
 		Mapa mapa = MapaJson.mapa(0);
@@ -53,24 +56,43 @@ public class Controlador {
 	}
 
 	/**************************** Administración ****************************/
+	/**************************** Quest ****************************/
 	public void addQuest(Quest quest) {
 		qdao.addQuest(quest);
 	}
 
 	public Quest seeQuest(int id) {
-		Quest quest=qdao.takeQuest(id);
+		Quest quest = qdao.takeQuest(id);
 		return quest;
 	}
+
 	public void modQuest(Quest quest) {
 		qdao.modQuest(quest);
 	}
-	public void deleteQuest(int id){
+
+	public void deleteQuest(int id) {
 		qdao.delQuest(id);
 	}
+
 	public ArrayList<Quest> listQuest() {
 		ArrayList<Quest> quest = qdao.leerQuest(";");
 		return quest;
 
+	}
+
+	/**************************** Enemy ****************************/
+
+	public Enemigo seeEnemy(int id) {
+		Enemigo enemy = ndao.takeEnemy(id);
+		return enemy;
+	}
+
+	public ArrayList<Enemigo> listEnemy() {
+		ArrayList<Enemigo> enemy = ndao.leerEnemigo(";");
+		return enemy;
+	}
+	public void deleteEnemy(int id) {
+		ndao.delEnemy(id);
 	}
 
 	/**************************** Movimientos ****************************/

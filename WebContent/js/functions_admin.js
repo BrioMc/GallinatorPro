@@ -21,7 +21,7 @@ function recallQuest() {
 	        $("#lista_quest tr:last").remove();
 	    }}
 		$.each(tpt, function(i) {
-			$nuevodiv= $('<tr><td>'+tpt[i].definicion+'</td><td>'+tpt[i].posX_init+'</td><td>'+tpt[i].posY_init+'</td><td>'+tpt[i].respuesta+'</td><td>'+tpt[i].posX_finish+'</td><td>'+tpt[i].posY_finish+'</td><td>'+tpt[i].points+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].idQuest+'" /></td><td><button>Modificar</button></td></tr>');
+			$nuevodiv= $('<tr><td>'+tpt[i].definicion+'</td><td>'+tpt[i].posX_init+'</td><td>'+tpt[i].posY_init+'</td><td>'+tpt[i].respuesta+'</td><td>'+tpt[i].posX_finish+'</td><td>'+tpt[i].posY_finish+'</td><td>'+tpt[i].points+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].idQuest+'" /></td><td><button onclick="modQuest('+tpt[i].idQuest+')">Modificar</button></td></tr>');
 			$('#lista_quest').append($nuevodiv);
 		});
 	});
@@ -92,8 +92,8 @@ function deleteQuest(){
 	}
 }
 /*****************************Enemigos*****************************/
-function showForm(){
-	  clearForm();
+function showFormEnemy(){
+	  clearFormEnemy();
 	if($('#addenemy').is(':visible')){
 		$('#addenemy').hide();
 	}
@@ -101,3 +101,64 @@ function showForm(){
 		$('#addenemy').show();
 	}
 }
+function clearFormEnemy(){
+	$("input[name=nombre]").val("");
+	$("#cajaimagen").empty();
+	$("input[name=daño]").val("");
+	$("input[name=sangre]").val("");
+	$("input[name=exp]").val("");
+	$("input[name=idEnemy]").val("null");
+	$("input[name=points]").val("");
+}
+function modEnemy(id){		
+	if(id==$("input[name=idEnemy]").val() && $('#addenemy').is(':visible')){
+		$('#addenemy').hide();
+		}
+	else{
+		$('#addenemy').show();
+	}
+	clearFormEnemy();
+	Controlador.seeEnemy(id, function(enemy){
+		$("input[name=nombre]").val(enemy.nombre);
+		var img = "<img src='../"+enemy.imagen+"'/>";
+		$("#cajaimagen").append(img);
+		$("input[name=dmg]").val(enemy.dmg);
+		$("input[name=sangre]").val(enemy.sangre);
+		$("input[name=exp]").val(enemy.exp);
+		$("input[name=idEnemy]").val(enemy.id);
+		$("input[name=points]").val(enemy.points);
+	});
+}
+function deleteEnemy(){
+	//Seleccionar los que se desean borrar
+	arraySelect=$("input[name='seleccion[]']:checked");
+	longitud=arraySelect.length;
+	if(longitud>0){
+		if(confirm("Seguro que desea borrar los Enemigos seleccionadas")){
+		$.each(arraySelect, function(i)
+			{
+				Controlador.deleteEnemy(arraySelect[i].value,function(){recallEnemy();
+				});
+		});
+	}
+	}
+	else{
+		alert("Seleccione algún Enemigo para poder borrar.");
+	}
+}
+
+function recallEnemy() {
+	Controlador.listEnemy(function(tpt){
+		trs1 = $('#list_enemy tr').length;
+		for(var i=0;i<trs1;i++){
+			trs = $('#list_enemy tr').length;
+		if(trs>1)
+	    {
+	        $("#list_enemy  tr:last").remove();
+	    }}
+		$.each(tpt, function(i) {
+			$nuevodiv= $('<tr><td>'+tpt[i].nombre+'</td><td><img class="enemyimg" src="../'+tpt[i].imagen+'"/></td><td>'+tpt[i].sangre+'</td><td>'+tpt[i].dmg+'</td><td>'+tpt[i].exp+'</td><td>'+tpt[i].points+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].id+'" /></td><td><button onclick="modEnemy('+tpt[i].id+')">Modificar</button></td></tr>');
+			$('#list_enemy ').append($nuevodiv);
+		});
+	});
+};

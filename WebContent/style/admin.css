@@ -70,7 +70,7 @@ article {
 	width: 50px;
 }
 
-#addquest {
+#addquest,#addenemy {
 	clear: both;
 	display: none;
 }
