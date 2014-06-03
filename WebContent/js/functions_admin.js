@@ -162,3 +162,76 @@ function recallEnemy() {
 		});
 	});
 };
+
+/**********************************************************Usuario**********************************************************/
+function clearFormUser(){
+	$("input[name=user]").val(null);
+	$("input[name=pass]").val(null);
+	$("input[name=email]").val(null);
+	$("input[name=idUser]").val(null);
+}
+function showFormUser(){
+	  clearFormUser();
+	if($('#moduser').is(':visible')){
+		$('#moduser').hide();
+	}
+	else{
+		$('#moduser').show();
+	}
+}
+function recallUser() {
+	Controlador.listUser(function(tpt){
+		trs1 = $('#list_user tr').length;
+		for(var i=0;i<trs1;i++){
+			trs = $('#list_user tr').length;
+		if(trs>1)
+	    {
+	        $("#list_user  tr:last").remove();
+	    }}
+		$.each(tpt, function(i) {
+			$nuevodiv= $('<tr><td>'+tpt[i].user+'</td><td>'+tpt[i].pass+'</td><td>'+tpt[i].email+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].id+'" /></td><td><button onclick="modEnemy('+tpt[i].id+')">Modificar</button></td></tr>');
+			$('#list_user').append($nuevodiv);
+		});
+	});
+};
+function modUser(id){		
+	if(id==$("input[name=idUser]").val() && $('#moduser').is(':visible')){
+		$('#moduser').hide();
+		}
+	else{
+		$('#moduser').show();
+	}
+	clearFormUser();
+	Controlador.seeUser(id, function(user){
+		$("input[name=user]").val(user.user);
+		$("input[name=pass]").val(user.pass);
+		$("input[name=email]").val(user.email);
+		$("input[name=idUser]").val(user.id);
+			});
+}
+function deleteUser(){
+	//Seleccionar los que se desean borrar
+	arraySelect=$("input[name='seleccion[]']:checked");
+	longitud=arraySelect.length;
+	if(longitud>0){
+		if(confirm("Seguro que desea borrar los Usuarios seleccionados?")){
+		$.each(arraySelect, function(i)
+			{
+				Controlador.deleteUser(arraySelect[i].value,function(){recallUser();
+				});
+		});
+	}
+	}
+	else{
+		alert("Seleccione algún usuario para poder borrar.");
+	}
+}
+
+function pushModUser(){
+	var user = new Object();
+	user.user=$("input[name=user]").val();
+	user.pass=$("input[name=pass]").val();
+	user.email=$("input[name=email]").val();
+	user.id=$("input[name=idUser]").val();
+	Controlador.modUser(user, function(){recallUser();});
+}

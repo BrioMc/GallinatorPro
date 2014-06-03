@@ -36,22 +36,22 @@ public class EnemigoDAO extends ConexionDB {
 				if (uploaded.isFormField()) {
 					String key = uploaded.getFieldName();
 					String valor = uploaded.getString("UTF-8");
-					System.out.println(i + ":" + key + ":" + valor);
+					// System.out.println(i + ":" + key + ":" + valor);
 					if (key.equals("idEnemy")) {
 						if (valor.equals("null")) {
-							System.out.println("Continua");
+							// System.out.println("Continua");
 							i++;
 						} else {
 							System.out.println("Actualiza");
 							pstmt = conexion.prepareStatement(UPDATE_STATEMENT);
 							pstmt.setString(7, valor);
-							System.out.println(i + ":" + key + ":" + valor);
+							// System.out.println(i + ":" + key + ":" + valor);
 							i++;
 						}
 					} else {
 
 						pstmt.setString(i, valor);
-						System.out.println(i + ":" + key + ":" + valor);
+						// System.out.println(i + ":" + key + ":" + valor);
 						i++;
 					}
 
@@ -64,11 +64,11 @@ public class EnemigoDAO extends ConexionDB {
 						File fichero = new File(base, nombre);
 						uploaded.write(fichero);
 						pstmt.setString(i, c + nombre);
-						System.out.println(i + ":" + c + nombre);
+						// System.out.println(i + ":" + c + nombre);
 						i++;
 					} else {
 						pstmt.setString(i, c + nombre);
-						System.out.println(i + ":" + c + nombre);
+						// System.out.println(i + ":" + c + nombre);
 						i++;
 					}
 				}

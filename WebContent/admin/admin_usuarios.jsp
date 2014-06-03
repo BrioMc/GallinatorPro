@@ -48,12 +48,13 @@
 					Sesion</a></li>
 		</ul>
 		<div class="clr"></div>
-		<table>
+		<table id="list_user">
 			<tr>
 				<th>Usuario</th>
 				<th>Pass</th>
 				<th>Email</th>
 				<th>Borrar</th>
+				<th>Modificar</th>
 			</tr>
 			<c:forEach var="usuario" items="${listaUsuario.usuario}">
 				<tr>
@@ -62,9 +63,13 @@
 					<td>${usuario.email}</td>
 					<td><input type="checkbox" name="seleccion[]"
 						value="${usuario.id}" /></td>
+					<td><button onclick="modUser(${usuario.id})">Modificar</button></td>
 				</tr>
 			</c:forEach>
 		</table>
+		<ul class="tabs">
+			<li><button onclick="deleteUser()">Borrar Seleccion</button></li>
+		</ul>
 		<div id="moduser">
 			<h1>Modificar User</h1>
 			<table>
@@ -77,7 +82,8 @@
 					<td><input name="user" type="text" /></td>
 					<td><input name="pass" type="password" /></td>
 					<td><input name="email" type="text" /></td>
-					<td><input type="button" value="Modificar" /></td>
+					<td><input type="hidden" name="idUser" value="" /><input
+						type="button" onclick="pushModUser()" value="Modificar" /></td>
 				</tr>
 			</table>
 		</div>

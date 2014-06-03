@@ -9,6 +9,7 @@ import gallinator.bean.SesionPlayer;
 import gallinator.json.MapaJson;
 import gallinator.modelo.Enemigo;
 import gallinator.modelo.Quest;
+import gallinator.modelo.Usuario;
 import gallinator.tileMap.Layers;
 import gallinator.tileMap.Mapa;
 
@@ -91,11 +92,31 @@ public class Controlador {
 		ArrayList<Enemigo> enemy = ndao.leerEnemigo(";");
 		return enemy;
 	}
+
 	public void deleteEnemy(int id) {
 		ndao.delEnemy(id);
 	}
 
-	/**************************** Movimientos ****************************/
+	/**************************** User ****************************/
+	public Usuario seeUser(int id) {
+		Usuario user = udao.takeUser(id);
+		return user;
+	}
+
+	public void modUser(Usuario user) {
+		udao.modUser(user);
+	}
+
+	public void deleteUser(int id) {
+		udao.delUser(id);
+	}
+
+	public ArrayList<Usuario> listUser() {
+		ArrayList<Usuario> quest = udao.leerUsuario("where id!=1;");
+		return quest;
+
+	}
+
 	/**************************** Movimientos ****************************/
 	public boolean[] calculaFlechas(int x, int y) {
 		boolean[] result = { true, true, true, true };
