@@ -1,8 +1,7 @@
 package gallinator.modelo;
 
-import java.io.Serializable;
 
-public class Quest implements Serializable {
+public class Quest{
 	/**
 	 * 
 	 */
@@ -14,6 +13,10 @@ public class Quest implements Serializable {
 	private int posX_finish;
 	private int posY_finish;
 	private int points;
+	private char battle;
+	private String enemy;
+	private char mejora;
+	private String sentenciaSQL;
 
 	public int getIdQuest() {
 		return idQuest;
@@ -22,7 +25,6 @@ public class Quest implements Serializable {
 	public void setIdQuest(int idQuest) {
 		this.idQuest = idQuest;
 	}
-
 
 	public String getDefinicion() {
 		return definicion;
@@ -78,6 +80,38 @@ public class Quest implements Serializable {
 
 	public void setPoints(int points) {
 		this.points = points;
+	}
+
+	public char getBattle() {
+		return battle;
+	}
+
+	public void setBattle(char battle) {
+		this.battle = battle;
+	}
+
+	public String getEnemy() {
+		return enemy;
+	}
+
+	public void setEnemy(String enemy) {
+		this.enemy = enemy;
+	}
+
+	public char getMejora() {
+		return mejora;
+	}
+
+	public void setMejora(char mejora) {
+		this.mejora = mejora;
+	}
+
+	public String getSentenciaSQL() {
+		return sentenciaSQL;
+	}
+
+	public void setSentenciaSQL(String sentenciaSQL) {
+		this.sentenciaSQL = sentenciaSQL;
 	}
 
 }

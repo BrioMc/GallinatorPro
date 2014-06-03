@@ -1,6 +1,7 @@
 package gallinator.modelo;
 
 import gallinator.DAO.EnemigoDAO;
+import gallinator.DAO.PJQuestDAO;
 import gallinator.DAO.PersonajeDAO;
 import gallinator.DAO.QuestDAO;
 import gallinator.DAO.UsuarioDAO;
@@ -15,7 +16,10 @@ import org.apache.commons.beanutils.PropertyUtilsBean;
 
 public class ModelFackade {
 	private static UsuarioDAO udao = new UsuarioDAO();
-	private static PersonajeDAO perdao = new PersonajeDAO();
+	private static PersonajeDAO pdao = new PersonajeDAO();
+	private static EnemigoDAO edao = new EnemigoDAO();
+	private static QuestDAO qdao = new QuestDAO();
+	private static PJQuestDAO pqdao = new PJQuestDAO();
 
 	/****************************************** Registros ******************************************/
 	// Registro de Usuario
@@ -45,13 +49,12 @@ public class ModelFackade {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		perdao.RegisterPlayer(player);
+		pdao.RegisterPlayer(player);
 	}
 
 	/****************************************** Listas ******************************************/
 	// *********Usuario
 	public static ArrayList<Usuario> getUsuario(String clausulaWhere) {
-		UsuarioDAO udao = new UsuarioDAO();
 
 		ArrayList<Usuario> usuario = udao.leerUsuario(clausulaWhere);
 		return usuario;
@@ -59,22 +62,26 @@ public class ModelFackade {
 
 	// *********Personaje
 	public static ArrayList<Personaje> getPersonaje(String clausulaWhere) {
-		PersonajeDAO pdao = new PersonajeDAO();
 
 		ArrayList<Personaje> personaje = pdao.leerPersonaje(clausulaWhere);
 		return personaje;
 	}
 
+	// *********Personaje
+	public static ArrayList<PJQuest> getPJQuest(String clausulaWhere) {
+		ArrayList<PJQuest> pjquest = pqdao.leerPJQuest(clausulaWhere);
+		return pjquest;
+	}
+
 	// *********Enemigos
 	public static ArrayList<Enemigo> getEnemigo(String clausulaWhere) {
-		EnemigoDAO edao = new EnemigoDAO();
+
 		ArrayList<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
 		return enemigo;
 	}
 
 	// *********Quests
 	public static ArrayList<Quest> getQuest(String clausulaWhere) {
-		QuestDAO qdao = new QuestDAO();
 
 		ArrayList<Quest> quest = qdao.leerQuest(clausulaWhere);
 		return quest;

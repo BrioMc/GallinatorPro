@@ -1,12 +1,11 @@
 package gallinator.listabean;
 
-import gallinator.modelo.Enemigo;
 import gallinator.modelo.ModelFackade;
+import gallinator.modelo.PJQuest;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
-public class ListaEnemigo {
-
+public class ListaPJQuest {
 	private String clausulaWhere = new String();
 
 	public String getClausulaWhere() {
@@ -17,9 +16,9 @@ public class ListaEnemigo {
 		this.clausulaWhere = clausulaWhere;
 	}
 
-	public ArrayList<Enemigo> getEnemigo() {
+	public Collection<PJQuest> getPJQuest() {
 
-		ArrayList<Enemigo> alumno = ModelFackade.getEnemigo(clausulaWhere);
-		return alumno;
+		Collection<PJQuest> pjquest= ModelFackade.getPJQuest(clausulaWhere);
+		return pjquest;
 	}
 }

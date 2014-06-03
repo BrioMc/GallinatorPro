@@ -3,7 +3,7 @@ package gallinator.listabean;
 import gallinator.modelo.ModelFackade;
 import gallinator.modelo.Usuario;
 
-import java.util.Collection;
+import java.util.ArrayList;
 
 public class ListaUsuario {
 	private String clausulaWhere = new String();
@@ -16,9 +16,9 @@ public class ListaUsuario {
 		this.clausulaWhere = clausulaWhere;
 	}
 
-	public Collection<Usuario> getUsuario() {
+	public ArrayList<Usuario> getUsuario() {
 
-		Collection<Usuario> usuario= ModelFackade.getUsuario(clausulaWhere);
+		ArrayList<Usuario> usuario= ModelFackade.getUsuario(clausulaWhere);
 		return usuario;
 	}
 }
