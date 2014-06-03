@@ -1,6 +1,7 @@
 package gallinator.dwr;
 
 import gallinator.DAO.EnemigoDAO;
+import gallinator.DAO.PJQuestDAO;
 import gallinator.DAO.PartidaDAO;
 import gallinator.DAO.PersonajeDAO;
 import gallinator.DAO.QuestDAO;
@@ -8,6 +9,7 @@ import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 import gallinator.json.MapaJson;
 import gallinator.modelo.Enemigo;
+import gallinator.modelo.Personaje;
 import gallinator.modelo.Quest;
 import gallinator.modelo.Usuario;
 import gallinator.tileMap.Layers;
@@ -28,6 +30,7 @@ public class Controlador {
 	SesionPlayer player = new SesionPlayer();
 	PersonajeDAO perdao = new PersonajeDAO();
 	EnemigoDAO ndao = new EnemigoDAO();
+	PJQuestDAO pjdao = new PJQuestDAO();
 
 	public int[][] arrayMapa() {
 		Mapa mapa = MapaJson.mapa(0);
@@ -57,6 +60,29 @@ public class Controlador {
 	}
 
 	/**************************** Administración ****************************/
+
+	public void comprobarQuests() {
+		ArrayList<Personaje> personaje = perdao.leerPersonaje("");
+		int personajes = personaje.size();
+		ArrayList<Quest> quest = qdao.leerQuest("");
+		int quests = quest.size();
+		Personaje pjPlayer = new Personaje();
+		Quest pjQuest = new Quest();
+		boolean exito = false;
+		for (int a = 0; a < personajes; a++) {
+			pjPlayer = (Personaje) personaje.get(a);
+			int pj = pjPlayer.getId();
+			for (int b = 0; b < quests; b++) {
+				pjQuest = (Quest) quest.get(b);
+				int pjq = pjQuest.getIdQuest();
+				exito = pjdao.existPJQuest(pj, pjq);
+				if (!exito) {
+					pjdao.insertPJQuest(pj, pjq);
+				}
+			}
+		}
+	}
+
 	/**************************** Quest ****************************/
 	public void addQuest(Quest quest) {
 		qdao.addQuest(quest);

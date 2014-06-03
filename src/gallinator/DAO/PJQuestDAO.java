@@ -9,8 +9,8 @@ import java.util.ArrayList;
 
 public class PJQuestDAO extends ConexionDB {
 	private String UPDATE_STATEMENT = "update enemigo set Nombre=?, Imagen=?, Dmg=?, Sangre=?, Exp=?, Points=? where idEnemigo=?";
-	private String INSERT_STATEMENT = "INSERT INTO enemigo (Nombre, Imagen, Dmg, Sangre, Exp, Points) VALUES (?,?,?,?,?,?)";
-
+	private String INSERT_STATEMENT = "INSERT INTO quest_personaje (Quest, Personaje) VALUES (?,?)";
+	private String FOUND_STATEMENT = "select * from quest_personaje where Quest=? and Personaje=?";
 	public ArrayList<PJQuest> leerPJQuest(String clausulaWhere) {
 
 		ArrayList<PJQuest> lista = new ArrayList<PJQuest>();
@@ -38,4 +38,35 @@ public class PJQuestDAO extends ConexionDB {
 		return lista;
 	}
 
+	public void insertPJQuest(int pj, int quest) {
+		try {
+			getConexion();
+			pstmt = conexion.prepareStatement(INSERT_STATEMENT);
+			pstmt.setInt(1, quest);
+			pstmt.setInt(2, pj);
+			pstmt.executeUpdate();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			cerrar();
+		}
+	}
+	public boolean existPJQuest(int pj, int quest){
+		boolean existe = false;
+		try {
+			getConexion();
+			pstmt = conexion.prepareStatement(FOUND_STATEMENT);
+			pstmt.setInt(1, quest);
+			pstmt.setInt(2, pj);
+			resultado=pstmt.executeQuery();
+			if(resultado.getRow()!=0){
+				existe=true;
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			cerrar();
+		}
+		return existe;
+	}
 }
