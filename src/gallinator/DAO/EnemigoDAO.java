@@ -95,7 +95,7 @@ public class EnemigoDAO extends ConexionDB {
 
 		try {
 			getConexion();
-			String insert = "select * from enemigo" + clausulaWhere;
+			String insert = "select * from enemigo " + clausulaWhere;
 			pstmt = conexion.prepareStatement(insert);
 			resultado = pstmt.executeQuery();
 			while (resultado.next()) {

@@ -16,7 +16,7 @@ table {
 	background: white;
 	margin: auto;
 	padding: 1em;
-	width: 50%;
+	width: 65%;
 }
 
 h1 {
@@ -70,7 +70,7 @@ article {
 	width: 50px;
 }
 
-#addquest,#addenemy,#addpj,#moduser {
+#addquest,#addenemy,#addpj,#moduser,#modpjquest {
 	clear: both;
 	display: none;
 }

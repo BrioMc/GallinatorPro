@@ -9,6 +9,7 @@ import gallinator.DAO.UsuarioDAO;
 import gallinator.bean.SesionPlayer;
 import gallinator.json.MapaJson;
 import gallinator.modelo.Enemigo;
+import gallinator.modelo.PJQuest;
 import gallinator.modelo.Personaje;
 import gallinator.modelo.Quest;
 import gallinator.modelo.Usuario;
@@ -24,14 +25,122 @@ import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 
 public class Controlador {
-	UsuarioDAO udao = new UsuarioDAO();
-	PartidaDAO pdao = new PartidaDAO();
-	QuestDAO qdao = new QuestDAO();
-	SesionPlayer player = new SesionPlayer();
-	PersonajeDAO perdao = new PersonajeDAO();
-	EnemigoDAO ndao = new EnemigoDAO();
-	PJQuestDAO pjdao = new PJQuestDAO();
+	private UsuarioDAO udao = new UsuarioDAO();
+	private PartidaDAO pdao = new PartidaDAO();
+	private QuestDAO qdao = new QuestDAO();
+	private SesionPlayer player = new SesionPlayer();
+	private PersonajeDAO perdao = new PersonajeDAO();
+	private EnemigoDAO ndao = new EnemigoDAO();
+	private PJQuestDAO pjdao = new PJQuestDAO();
+	private ArrayList<Personaje> personaje = perdao.leerPersonaje("");
+	private ArrayList<Quest> quest = qdao.leerQuest("");
+	private ArrayList<PJQuest> pjquest = pjdao.leerPJQuest("");
 
+	/******************************************************** Partida ********************************************************/
+
+	public int initQuestPJ() {
+		int inicio = 0;
+		// Si devuelve 0 --> No existe quest
+		// Si devuelve 1 --> Existe quest pero no se ha iniciado
+		// Si devuelve 2 --> Existe quest pero y se ha iniciado
+		/************ Comprobar si hay quest en el sitio ************/
+		int id = leerSesion().getId();
+		int x = leerSesion().getPosX();
+		int y = leerSesion().getPosY();
+		Quest quest = qdao.initQuest(x, y);
+		int idQuest = quest.getIdQuest();
+		if (idQuest != 0) {
+			PJQuest pjq = pjdao.takePJQuest(id, idQuest);
+			if (pjq.getInit().equals("Y")) {
+				inicio = 2;
+			} else {
+				inicio = 1;
+				pjdao.updateInit(id, idQuest);
+			}
+		} else {
+			inicio = 0;
+		}
+
+		return inicio;
+	}
+
+	public int finishQuestPJ() {
+		int finish = 0;
+		// Si devuelve 0 --> No existe quest
+		// Si devuelve 1 --> Existe quest pero no se ha iniciado
+		// Si devuelve 2 --> Existe quest pero y se ha iniciado
+		int id = leerSesion().getId();
+		int x = leerSesion().getPosX();
+		int y = leerSesion().getPosY();
+		Quest quest = qdao.finishQuest(x, y);
+		int idQuest = quest.getIdQuest();
+		if (idQuest != 0) {
+			PJQuest pjq = pjdao.takePJQuest(id, idQuest);
+			if (pjq.getInit().equals("Y")) {
+				finish = 2;
+				pjdao.updateDone(id, idQuest);
+			} else {
+				finish = 1;
+			}
+		} else {
+			finish = 0;
+		}
+		return finish;
+	}
+
+	public Quest takeQuest(int option) {
+		Quest que = new Quest();
+		int x = leerSesion().getPosX();
+		int y = leerSesion().getPosY();
+		if (option == 1) {
+			que = qdao.initQuest(x, y);
+		} else {
+			que = qdao.finishQuest(x, y);
+		}
+		return que;
+	}
+
+	/**************************** INICIO QUEST ****************************/
+	public int[] initXQuest() {
+		int[] initX = new int[quest.size()];
+		for (int i = 0; i < quest.size(); i++) {
+			Quest ques = quest.get(i);
+			initX[i] = ques.getPosX_init();
+		}
+		return initX;
+	}
+
+	public int[] initYQuest() {
+		int[] initY = new int[quest.size()];
+		for (int i = 0; i < quest.size(); i++) {
+			Quest ques = quest.get(i);
+			initY[i] = ques.getPosY_init();
+		}
+		return initY;
+	}
+
+	/**************************** FINISH QUEST ****************************/
+	public int[] finishXQuest() {
+		int[] finishX = new int[quest.size()];
+		for (int i = 0; i < quest.size(); i++) {
+			Quest ques = quest.get(i);
+			finishX[i] = ques.getPosX_finish();
+		}
+		return finishX;
+	}
+
+	public int[] finishYQuest() {
+		int[] finishY = new int[quest.size()];
+		for (int i = 0; i < quest.size(); i++) {
+			Quest ques = quest.get(i);
+			finishY[i] = ques.getPosY_finish();
+		}
+		return finishY;
+	}
+
+	/**************************** Inicio Quest ****************************/
+
+	/**************************** FINISH QUEST ****************************/
 	public int[][] arrayMapa() {
 		Mapa mapa = MapaJson.mapa(0);
 		Layers[] layerse;
@@ -62,9 +171,7 @@ public class Controlador {
 	/**************************** Administración ****************************/
 
 	public void comprobarQuests() {
-		ArrayList<Personaje> personaje = perdao.leerPersonaje("");
 		int personajes = personaje.size();
-		ArrayList<Quest> quest = qdao.leerQuest("");
 		int quests = quest.size();
 		Personaje pjPlayer = new Personaje();
 		Quest pjQuest = new Quest();
@@ -83,6 +190,14 @@ public class Controlador {
 		}
 	}
 
+	public void deletePJQ(int id) {
+		pjdao.delPJQ(id);
+	}
+	public ArrayList<PJQuest> listPJQ() {
+		ArrayList<PJQuest> pjq = pjdao.leerPJQuest(";");
+		return pjq;
+
+	}
 	/**************************** Quest ****************************/
 	public void addQuest(Quest quest) {
 		qdao.addQuest(quest);

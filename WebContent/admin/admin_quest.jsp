@@ -16,6 +16,9 @@
 <jsp:useBean id="listaQuest" class="gallinator.listabean.ListaQuest"
 	scope="session" />
 <jsp:setProperty name="listaQuest" property="clausulaWhere" value="" />
+<jsp:useBean id="listaEnemy" class="gallinator.listabean.ListaEnemigo"
+	scope="session" />
+<jsp:setProperty name="listaEnemy" property="clausulaWhere" value="" />
 
 <head>
 <script type="text/javascript" src="../js/jquery-2.0.2.js">
@@ -43,6 +46,7 @@
 			<li><a href="admin_usuarios.jsp">Usuarios</a></li>
 			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
 			<li><a href="admin_enemigos.jsp">Enemigos</a></li>
+			<li><a href="admin_pjquest.jsp">PJ_Quests</a></li>
 			<li class="active"><a href="admin_quest.jsp">Quests</a></li>
 			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
 					Sesion</a></li>
@@ -58,6 +62,10 @@
 					<th>Recompensa</th>
 					<th>Final X</th>
 					<th>Final Y</th>
+					<th>Battle</th>
+					<th>Enemigo</th>
+					<th>Mejora</th>
+					<th>Sentencia</th>
 					<th>Puntos</th>
 					<th>Borrar</th>
 					<th>Modificar</th>
@@ -70,6 +78,13 @@
 						<td>${quest.respuesta}</td>
 						<td>${quest.posX_finish}</td>
 						<td>${quest.posY_finish}</td>
+						<td>${quest.battle}</td>
+						<jsp:setProperty name="listaEnemy" property="clausulaWhere"
+							value=" where idEnemigo=${quest.enemy}" />
+
+						<td><c:forEach var="enemy" items="${listaEnemy.enemigo}">${enemy.nombre}</c:forEach></td>
+						<td>${quest.mejora}</td>
+						<td>${quest.sentenciaSQL}</td>
 						<td>${quest.points}</td>
 						<td><input type="checkbox" name="seleccion[]"
 							value="${quest.idQuest}" /></td>
@@ -83,6 +98,7 @@
 				<li><button onclick="deleteQuest()">Borrar Seleccion</button></li>
 			</ul>
 			<div id="addquest">
+				<jsp:setProperty name="listaEnemy" property="clausulaWhere" value="" />
 				<h1>Añadir/Modificar Quest</h1>
 				<table>
 					<tr>
@@ -92,9 +108,14 @@
 						<th>Recompensa</th>
 						<th>Final X</th>
 						<th>Final Y</th>
+						<th>Battle</th>
+						<th>Enemigo</th>
+						<th>Mejora</th>
+						<th>Sentencia</th>
 						<th>Puntos</th>
 					</tr>
 					<tr>
+
 						<td><textarea name="definicion" rows="" cols=""><!-- text --></textarea></td>
 						<td><input class="inputnumber" type="number" name="posX_init" /></td>
 						<td><input class="inputnumber" type="number" name="posY_init" /></td>
@@ -103,11 +124,21 @@
 							name="posX_finish" /></td>
 						<td><input class="inputnumber" type="number"
 							name="posY_finish" /></td>
+						<td><select name="battle"><option value='Y'>Si</option>
+								<option value='N'>No</option></select></td>
+
+						<td><select name="enemy"><option value="0">--Ninguno--</option><c:forEach var="enemy"
+									items="${listaEnemy.enemigo}">
+									<option value="${enemy.id}">${enemy.nombre}</option>
+								</c:forEach></select></td>
+						<td><select name="mejora"><option value='Y'>Si</option>
+								<option value='N'>No</option></select></td>
+						<td><textarea name="sentencia" rows="" cols=""><!-- text --></textarea></td>
 						<td><input class="inputnumber" type="number" name="points"
 							rows="" cols="" /></td>
-						<td><input type="hidden" name="idQuest" id="idQuest"
-							value="" /></td>
-						<td><input type="button" value="Añadir/Modificar" onclick="addQuest()" /></td>
+						<td><input type="button" value="Añadir/Modificar"
+							onclick="addQuest()" /></td>
+						<td><input type="hidden" name="idQuest" id="idQuest" value="" /></td>
 					</tr>
 
 				</table>

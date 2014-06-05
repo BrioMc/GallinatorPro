@@ -1,7 +1,6 @@
 package gallinator.modelo;
 
-
-public class Quest{
+public class Quest {
 	/**
 	 * 
 	 */
@@ -13,9 +12,9 @@ public class Quest{
 	private int posX_finish;
 	private int posY_finish;
 	private int points;
-	private char battle;
-	private String enemy;
-	private char mejora;
+	private String battle;
+	private int enemy;
+	private String mejora;
 	private String sentenciaSQL;
 
 	public int getIdQuest() {
@@ -82,27 +81,27 @@ public class Quest{
 		this.points = points;
 	}
 
-	public char getBattle() {
+	public String getBattle() {
 		return battle;
 	}
 
-	public void setBattle(char battle) {
+	public void setBattle(String battle) {
 		this.battle = battle;
 	}
 
-	public String getEnemy() {
+	public int getEnemy() {
 		return enemy;
 	}
 
-	public void setEnemy(String enemy) {
+	public void setEnemy(int enemy) {
 		this.enemy = enemy;
 	}
 
-	public char getMejora() {
+	public String getMejora() {
 		return mejora;
 	}
 
-	public void setMejora(char mejora) {
+	public void setMejora(String mejora) {
 		this.mejora = mejora;
 	}
 

@@ -10,21 +10,22 @@
 		doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"
 		omit-xml-declaration="true" />
 	<html xmlns="http://www.w3.org/1999/xhtml">
-<jsp:useBean id="personajeBean" class="gallinator.bean.SesionPlayer"
+<jsp:useBean id="pjquestBean" class="gallinator.bean.PJQuestBean"
 	scope="session" />
-<jsp:useBean id="listaPersonaje"
-	class="gallinator.listabean.ListaPersonaje" scope="session" />
-<jsp:setProperty name="listaPersonaje" property="clausulaWhere" value="" />
+<jsp:useBean id="listaPJQuest" class="gallinator.listabean.ListaPJQuest"
+	scope="session" />
+<jsp:setProperty name="listaPJQuest" property="clausulaWhere" value="" />
 <head>
-
 <script type="text/javascript" src="../js/jquery-2.0.2.js">
 <!--text-->
 	
 </script>
 <script type="text/javascript" src="../js/functions_admin.js">
 <!--text-->
-		
+	
 </script>
+
+<jsp:include page="../includes/js_admin.jsp" />
 <link rel="stylesheet" type="text/css" href="../style/admin.css"
 	media="screen" />
 <title>GallinatorPro</title>
@@ -39,50 +40,52 @@
 		<h1>Administración</h1>
 		<ul class="tabs">
 			<li><a href="admin_usuarios.jsp">Usuarios</a></li>
-			<li class="active"><a href="admin_jugadores.jsp">Jugadores</a></li>
+			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
 			<li><a href="admin_enemigos.jsp">Enemigos</a></li>
-			<li><a href="admin_pjquest.jsp">PJ_Quests</a></li>
+			<li class="active"><a href="admin_pjquest.jsp">PJ_Quests</a></li>
 			<li><a href="admin_quest.jsp">Quests</a></li>
-			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar Sesion</a></li>
+			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
+					Sesion</a></li>
 		</ul>
 		<div class="clr"></div>
 		<section class="block">
-
-			<table>
+			<table id="list_pjq">
 				<tr>
-					<th>Usuario</th>
-					<th>Alias</th>
-					<th>Clase</th>
-					<th>Sangre</th>
-					<th>Mana</th>
-					<th>Daño Físico</th>
-					<th>Daño Habilidad</th>
-					<th>Experiencia</th>
-					<th>Level</th>
-					<th>Pos X</th>
-					<th>Pos Y</th>
-					<th>Score</th>
-					<th>Seleccion</th>
+					<th>Quest</th>
+					<th>Personaje</th>
+					<th>Iniciada</th>
+					<th>Acabada</th>
+					<th>Borrar</th>
 				</tr>
-				<c:forEach var="personaje" items="${listaPersonaje.personaje}">
+				<c:forEach var="pj" items="${listaPJQuest.PJQuest}">
 					<tr>
-						<td>${personaje.usuario}</td>
-						<td>${personaje.alias}</td>
-						<td>${personaje.clase}</td>
-						<td>${personaje.sangre}/${personaje.maxSangre}</td>
-						<td>${personaje.mana}/${personaje.maxMana}</td>
-						<td>${personaje.dmgF}</td>
-						<td>${personaje.dmgH}</td>
-						<td>${personaje.exp}</td>
-						<td>${personaje.lv}</td>
-						<td>${personaje.posX}</td>
-						<td>${personaje.posY}</td>
-						<td>${personaje.score}</td>
+						<td>${pj.quest}</td>
+						<td>${pj.personaje}</td>
+						<td>${pj.init}</td>
+						<td>${pj.done}</td>
 						<td><input type="checkbox" name="seleccion[]"
-							vale="${personaje.id}" /></td>
+							value="${pj.idquest_personaje}" /></td>
+
 					</tr>
 				</c:forEach>
 			</table>
+			<ul class="tabs">
+				<li><button onclick="deletePJQ()">Borrar Seleccion</button></li>
+			</ul>
+			<div id="modpjquest">
+				<h1>Modificar Quest del PJ</h1>
+				<table>
+					<tr>
+						<th>Quest</th>
+						<th>Personaje</th>
+						<th>Iniciada</th>
+						<th>Acabada</th>
+						<th>Modificar</th>
+					</tr>
+					<tr>
+					</tr>
+				</table>
+			</div>
 		</section>
 	</section>
 </body>

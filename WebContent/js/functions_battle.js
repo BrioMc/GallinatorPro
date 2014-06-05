@@ -1,41 +1,6 @@
 function closeSession(){
 	Controlador.closeSession(function(){location.reload();});
 }
-/*****************************Personaje_Quest*****************************/
-
-function deletePJQ(){
-	//Seleccionar los que se desean borrar
-	arraySelect=$("input[name='seleccion[]']:checked");
-	longitud=arraySelect.length;
-	if(longitud>0){
-		if(confirm("Seguro que desea borrar las quest del pj seleccionado?")){
-		$.each(arraySelect, function(i)
-			{
-				Controlador.deletePJQ(arraySelect[i].value,function(){recallPJQ();
-				});
-		});
-	}
-	}
-	else{
-		alert("Seleccione algún usuario para poder borrar.");
-	}
-}
-function recallPJQ() {
-	Controlador.listPJQ(function(tpt){
-		trs1 = $('#list_pjq tr').length;
-		for(var i=0;i<trs1;i++){
-			trs = $('#list_pjq tr').length;
-		if(trs>1)
-	    {
-	        $("#list_pjq  tr:last").remove();
-	    }}
-		$.each(tpt, function(i) {
-			$nuevodiv= $('<tr><td>'+tpt[i].quest+'</td><td>'+tpt[i].personaje+'</td><td>'+tpt[i].init+'</td><td>'+tpt[i].done+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].id+'" /></td></tr>');
-			$('#list_pjq').append($nuevodiv);
-		});
-	});
-};
-
 /*****************************Quest*****************************/
 function showFormQuest(){
 	  clearForm();
@@ -56,7 +21,7 @@ function recallQuest() {
 	        $("#lista_quest tr:last").remove();
 	    }}
 		$.each(tpt, function(i) {
-			$nuevodiv= $('<tr><td>'+tpt[i].definicion+'</td><td>'+tpt[i].posX_init+'</td><td>'+tpt[i].posY_init+'</td><td>'+tpt[i].respuesta+'</td><td>'+tpt[i].posX_finish+'</td><td>'+tpt[i].posY_finish+'</td><td>'+tpt[i].battle+'</td><td>'+tpt[i].enemy+'</td><td>'+tpt[i].mejora+'</td><td>'+tpt[i].sentenciaSQL+'</td><td>'+tpt[i].points+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].idQuest+'" /></td><td><button onclick="modQuest('+tpt[i].idQuest+')">Modificar</button></td></tr>');
+			$nuevodiv= $('<tr><td>'+tpt[i].definicion+'</td><td>'+tpt[i].posX_init+'</td><td>'+tpt[i].posY_init+'</td><td>'+tpt[i].respuesta+'</td><td>'+tpt[i].posX_finish+'</td><td>'+tpt[i].posY_finish+'</td><td>'+tpt[i].points+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].idQuest+'" /></td><td><button onclick="modQuest('+tpt[i].idQuest+')">Modificar</button></td></tr>');
 			$('#lista_quest').append($nuevodiv);
 		});
 	});
@@ -69,7 +34,6 @@ function clearForm(){
 	$("textarea[name=resultado]").val("");
 	$("input[name=posX_finish]").val("");
 	$("input[name=posY_finish]").val("");
-	$("textarea[name=sentencia]").val("");
 	$("input[name=points]").val("");
 	$('#idQuest').val(null);
 }
@@ -88,14 +52,6 @@ function modQuest(id){
 		$("input[name=posX_finish]").val(quest.posX_finish);
 		$("input[name=posY_finish]").val(quest.posY_finish);
 		$("input[name=points]").val(quest.points);
-		$("select[name=battle]").val(quest.battle);
-		if(quest.battle=='Y'){
-			$("select[name=enemy]").val(quest.enemy);}
-		else{
-			$("select[name=enemy]").val(0);	
-		}
-		$("select[name=mejora]").val(quest.mejora);
-		$("textarea[name=sentencia]").val(quest.sentenciaSQL);
 		$('#idQuest').val(quest.idQuest);
 	});
 }
@@ -109,10 +65,6 @@ function addQuest() {
 	quest.respuesta = $("textarea[name=resultado]").val();
 	quest.posX_finish = $("input[name=posX_finish]").val();
 	quest.posY_finish = $("input[name=posY_finish]").val();
-	quest.battle = $("select[name=battle]").val();
-	quest.enemy = $("select[name=enemy]").val();
-	quest.mejora = $("select[name=mejora]").val();
-	quest.sentenciaSQL = $("textarea[name=sentencia]").val();
 	quest.points = $("input[name=points]").val();
 	if(quest.idQuest==""){
 	Controlador.addQuest(quest, function() {recallQuest();

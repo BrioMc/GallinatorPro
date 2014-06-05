@@ -42,6 +42,7 @@
 			<li><a href="admin_usuarios.jsp">Usuarios</a></li>
 			<li><a href="admin_jugadores.jsp">Jugadores</a></li>
 			<li class="active"><a href="admin_enemigos.jsp">Enemigos</a></li>
+			<li><a href="admin_pjquest.jsp">PJ_Quests</a></li>
 			<li><a href="admin_quest.jsp">Quests</a></li>
 			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
 					Sesion</a></li>
