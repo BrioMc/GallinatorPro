@@ -28,7 +28,7 @@
 <jsp:include page="../includes/js_admin.jsp" />
 <link rel="stylesheet" type="text/css" href="../style/admin.css"
 	media="screen" />
-<title>GallinatorPro</title>
+<title>Administración - Oasis</title>
 <jsp:useBean id="SesionAdmin" class="gallinator.bean.UsuarioBean"
 	scope="session" />
 </head>

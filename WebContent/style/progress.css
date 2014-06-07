@@ -1,0 +1,95 @@
+progress[value] {
+	/* Elimino la apariencia por defecto */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* Quito el borde que aparece en Firefox */
+	border: none;
+	/* 	Estos estilos solo se aplicaran al fondo de la barra en mozilla */
+	overflow: hidden;
+	border: 1px inset #666;
+	background-color: #D8D8D8;
+	border-radius: 20px;
+}
+
+.progress {
+	margin-right: 30px;
+	margin-bottom: 20px;
+}
+
+.progress span {
+	font-weight: bold;
+}
+
+/* Compatibilidad de color en Firefox, Chrome y Safari */
+#progressmana::-moz-progress-bar {
+	background: #7db9e8;
+	background: -moz-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(28%, #7db9e8),
+		color-stop(28%, #7db9e8), color-stop(99%, #1e5799));
+	background: -webkit-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: -o-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: -ms-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: linear-gradient(to right, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8',
+		endColorstr='#1e5799', GradientType=1);
+}
+
+#progressmana::-webkit-progress-value {
+	background: #7db9e8;
+	background: -moz-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(28%, #7db9e8),
+		color-stop(28%, #7db9e8), color-stop(99%, #1e5799));
+	background: -webkit-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: -o-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: -ms-linear-gradient(left, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	background: linear-gradient(to right, #7db9e8 28%, #7db9e8 28%, #1e5799 99%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8',
+		endColorstr='#1e5799', GradientType=1);
+}
+
+#progressangre::-webkit-progress-value {
+	background: #b4ddb4;
+	background: -moz-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b4ddb4),
+		color-stop(17%, #83c783), color-stop(33%, #52b152),
+		color-stop(67%, #008a00), color-stop(100%, #005700),
+		color-stop(100%, #002400));
+	background: -webkit-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%,
+		#008a00 67%, #005700 100%, #002400 100%);
+	background: -o-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	background: -ms-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	background: linear-gradient(to right, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4',
+		endColorstr='#002400', GradientType=1);
+}
+
+#progressangre::-moz-progress-bar {
+	background: #b4ddb4;
+	background: -moz-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b4ddb4),
+		color-stop(17%, #83c783), color-stop(33%, #52b152),
+		color-stop(67%, #008a00), color-stop(100%, #005700),
+		color-stop(100%, #002400));
+	background: -webkit-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%,
+		#008a00 67%, #005700 100%, #002400 100%);
+	background: -o-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	background: -ms-linear-gradient(left, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	background: linear-gradient(to right, #b4ddb4 0%, #83c783 17%, #52b152 33%, #008a00
+		67%, #005700 100%, #002400 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4',
+		endColorstr='#002400', GradientType=1);
+}
+
+progress::-webkit-progress-bar {
+	background-color: #D8D8D8;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	border-radius: 20px;
+}

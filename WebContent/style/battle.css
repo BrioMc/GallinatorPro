@@ -1,9 +1,17 @@
+h1 {
+	margin: 0;
+	padding: 0;
+	background-color: wheat;
+}
+
 #battle {
-	width: 1000px;
-	height: 600px;
+	width: 1146px;
+	height: 576px;
 	margin: auto;
 	background: black;
-	opacity: 0.5;
+	opacity: 0.8;
+	position: absolute;
+	display: none;
 }
 
 #battleenemy {
@@ -16,7 +24,10 @@
 }
 
 #battleenemyimg {
-	
+	width: 80%;
+	background-color: black;
+	height: 80%;
+	margin: 10px;
 }
 
 #battleenemylife {
@@ -32,26 +43,61 @@
 	margin: 5px;
 }
 
-}
 #battlepjimg {
-	
+	width: 80%;
+	height: 70%;
+	background-color: black;
+	margin: 10px;
+	float: right;
 }
 
 #battlepjlife {
-	
+	float: left;
 }
 
 #battlepjoptions {
-	
+	float: right;
+}
+
+#battlepjoptions button {
+	width: 140px;
+	height: 50px;
+	display: inherit;
+	margin: auto 10px;
 }
 
 #battleinfo {
 	clear: both;
 	margin: 5px;
 	width: 99%;
-	height: 135px;
+	height: 111px;
 	box-shadow: 0px 0px 10px white;
 	border-radius: 5px;
 	background-color: white;
 	opacity: 0.8;
+}
+
+#battleinfo button {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+}
+
+progress[value] {
+	/* Elimino la apariencia por defecto */
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	/* Quito el borde que aparece en Firefox */
+	border: none;
+	/* Añado mis propios estilos */
+	width: 300px;
+	height: 30px;
+	overflow: hidden;
+	margin: 10px;
+	/*  Estos estilos solo se aplicaran al fondo de la barra en mozilla */
+	border: 1px inset #666;
+	background-color: #D8D8D8;
+	border-radius: 20px;
+	border: 1px inset #666
 }

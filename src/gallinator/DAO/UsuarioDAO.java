@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UsuarioDAO extends ConexionDB {
+	
 	public ArrayList<Usuario> leerUsuario(String clausulaWhere) {
-
 		ArrayList<Usuario> lista = new ArrayList<Usuario>();
 
 		try {

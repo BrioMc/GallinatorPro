@@ -23,6 +23,13 @@ html,body,div {
 	box-shadow: 0 0 10px;
 }
 
+#player progress {
+	color: green;
+	background-color: #D8D8D8;
+	width: 180px;
+	height: 22px;
+}
+
 #logginbutton,#signinbutton {
 	box-shadow: inset 0px 1px 50px -1px #97c4fe;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3d94f6
@@ -64,11 +71,11 @@ html,body,div {
 	top: 1px;
 }
 
-#game,#panelusuario,#logginbox {
+#game,#panelusuario,#logginbox,#player {
 	float: left;
 }
 
-div#panelusuario {
+#panelusuario {
 	width: 250px;
 	box-shadow: 0px 0px 10px;
 }

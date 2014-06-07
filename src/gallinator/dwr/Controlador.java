@@ -36,8 +36,29 @@ public class Controlador {
 	private ArrayList<Quest> quest = qdao.leerQuest("");
 	private ArrayList<PJQuest> pjquest = pjdao.leerPJQuest("");
 
-	/******************************************************** Partida ********************************************************/
+	// Devuelve mediante una matriz el valor de cada casilla del mapa
+	public int[][] arrayMapa() {
+		Mapa mapa = MapaJson.mapa(0);
+		Layers[] layerse;
+		layerse = mapa.getLayers();
+		Layers layer = new Layers();
+		layer = layerse[0];
+		mapa.getLayers();
+		int array[] = layer.getData();
+		int c = -1;
+		int arrayTiled[][] = new int[18][28];
+		for (int y = 0; y < 18; y++) {
+			for (int x = 0; x < 28; x++) {
+				c++;
+				arrayTiled[y][x] = array[c];
+			}
+		}
 
+		return arrayTiled;
+	}
+
+	/******************************************************** Partida ********************************************************/
+	// Comprueba si alguna quest inicia en la casilla del personaje
 	public int initQuestPJ() {
 		int inicio = 0;
 		// Si devuelve 0 --> No existe quest
@@ -64,6 +85,7 @@ public class Controlador {
 		return inicio;
 	}
 
+	// Comprueba si alguna quest finaliza en la casilla del personaje
 	public int finishQuestPJ() {
 		int finish = 0;
 		// Si devuelve 0 --> No existe quest
@@ -88,6 +110,8 @@ public class Controlador {
 		return finish;
 	}
 
+	// Teniendo en cuenta que exista quest, dependiendo de la opcion tomada
+	// iniciará o finalizará la quest que corresponda
 	public Quest takeQuest(int option) {
 		Quest que = new Quest();
 		int x = leerSesion().getPosX();
@@ -101,6 +125,8 @@ public class Controlador {
 	}
 
 	/**************************** INICIO QUEST ****************************/
+	// Devuelve un array con la posicion de inicio de la quest X y la posicion
+	// de la quest Y
 	public int[] initXQuest() {
 		int[] initX = new int[quest.size()];
 		for (int i = 0; i < quest.size(); i++) {
@@ -120,6 +146,8 @@ public class Controlador {
 	}
 
 	/**************************** FINISH QUEST ****************************/
+	// Devuelve un array con la posicion de finaliza de la quest X y la posicion
+	// de la quest Y
 	public int[] finishXQuest() {
 		int[] finishX = new int[quest.size()];
 		for (int i = 0; i < quest.size(); i++) {
@@ -138,29 +166,6 @@ public class Controlador {
 		return finishY;
 	}
 
-	/**************************** Inicio Quest ****************************/
-
-	/**************************** FINISH QUEST ****************************/
-	public int[][] arrayMapa() {
-		Mapa mapa = MapaJson.mapa(0);
-		Layers[] layerse;
-		layerse = mapa.getLayers();
-		Layers layer = new Layers();
-		layer = layerse[0];
-		mapa.getLayers();
-		int array[] = layer.getData();
-		int c = -1;
-		int arrayTiled[][] = new int[18][28];
-		for (int y = 0; y < 18; y++) {
-			for (int x = 0; x < 28; x++) {
-				c++;
-				arrayTiled[y][x] = array[c];
-			}
-		}
-
-		return arrayTiled;
-	}
-
 	public SesionPlayer load(String user) {
 		SesionPlayer load = perdao.PlayerSesion(user);
 
@@ -168,8 +173,12 @@ public class Controlador {
 		return load;
 	}
 
-	/**************************** Administración ****************************/
+	/******************************************************** Administración ********************************************************/
 
+	/**************************** PJ_Quest ****************************/
+	// Comprueba que cada jugador tiene creada su asociacion con cada quest, en
+	// caso de no tenerla las crea con los valores iniciales de 0(sin empezar
+	// quest)
 	public void comprobarQuests() {
 		int personajes = personaje.size();
 		int quests = quest.size();
@@ -190,32 +199,45 @@ public class Controlador {
 		}
 	}
 
+	// Da la opcion de en caso de que el administrador lo vea conveniente borrar
+	// la tupla que asocia al jugador y una quest
 	public void deletePJQ(int id) {
 		pjdao.delPJQ(id);
 	}
+
+	// Devuelve un ArrayList del objeto PJQuest que se utilizará para listar o
+	// mostrar valores que se necesitan
 	public ArrayList<PJQuest> listPJQ() {
 		ArrayList<PJQuest> pjq = pjdao.leerPJQuest(";");
 		return pjq;
 
 	}
+
 	/**************************** Quest ****************************/
+	// Añade una nueva quest
 	public void addQuest(Quest quest) {
 		qdao.addQuest(quest);
 	}
 
+	// Devuelve una quest buscada por su id único
 	public Quest seeQuest(int id) {
 		Quest quest = qdao.takeQuest(id);
 		return quest;
 	}
 
+	// En caso de querer modificar una quest por fallo o por cambios se usa este
+	// metodo
 	public void modQuest(Quest quest) {
 		qdao.modQuest(quest);
 	}
 
+	// Tambien en caso de querer borrar la quest, se da esa opcion
 	public void deleteQuest(int id) {
 		qdao.delQuest(id);
 	}
 
+	// Devuelve un ArrayList del objeto Quest que se utilizará para listar o
+	// mostrar valores que se necesitan
 	public ArrayList<Quest> listQuest() {
 		ArrayList<Quest> quest = qdao.leerQuest(";");
 		return quest;
@@ -223,35 +245,45 @@ public class Controlador {
 	}
 
 	/**************************** Enemy ****************************/
-
+	// Devuelve un objeto Enemigo buscado por su id único
 	public Enemigo seeEnemy(int id) {
 		Enemigo enemy = ndao.takeEnemy(id);
 		return enemy;
 	}
 
+	// Devuelve un ArrayList del objeto Enemigo que se utilizará para listar o
+	// mostrar valores que se necesitan
 	public ArrayList<Enemigo> listEnemy() {
 		ArrayList<Enemigo> enemy = ndao.leerEnemigo(";");
 		return enemy;
 	}
 
+	// Tambien en caso de querer borrar la quest, se da esa opcion
 	public void deleteEnemy(int id) {
 		ndao.delEnemy(id);
 	}
 
 	/**************************** User ****************************/
+	// Devuelve un objeto Usuario buscado por su id único
 	public Usuario seeUser(int id) {
 		Usuario user = udao.takeUser(id);
 		return user;
 	}
 
+	// De igual forma si se viera necesario modificar el usuario se recurriría a
+	// este metodo
 	public void modUser(Usuario user) {
 		udao.modUser(user);
 	}
 
+	// Tambien se puede borrar el usuario en caso de necesitarlo
 	public void deleteUser(int id) {
 		udao.delUser(id);
 	}
 
+	// Devuelve un ArrayList del objeto Usuario quitando el admin que se
+	// utilizará para listar o
+	// mostrar valores que se necesitan
 	public ArrayList<Usuario> listUser() {
 		ArrayList<Usuario> quest = udao.leerUsuario("where id!=1;");
 		return quest;
@@ -259,7 +291,15 @@ public class Controlador {
 	}
 
 	/**************************** Movimientos ****************************/
+	// Tomando la posicion inicial X e Y del personaje este metodo calcula en
+	// que posiciones puede moverse partiendo de la matriz antes devuelta
+	// (mediante el metodo arrayMapa())y constractando si las posiciones
+	// adyacentes al personajes de forma vertical y horizontal devolviendo un
+	// array de booleanos que indican en que posiciones es posible el movimiento
+	// en el siguiente orden: {Arriba,Derecha,Abajo,Izquierda}
 	public boolean[] calculaFlechas(int x, int y) {
+		// En un principio los ponemos todos a true y mediante ifs comprobamos
+		// si se puede y en caso de no, turnamos esa posicion a false
 		boolean[] result = { true, true, true, true };
 		// Ladrillos -->2,20,21,19,17,11,18,9
 		// Piedra -->25,26,27,35,43,42,41,33
@@ -267,8 +307,15 @@ public class Controlador {
 		int pos[][] = arrayMapa();
 		int posX;
 		int posY;
+		// Este es el array de los valores de las casillas bloqueadas
 		int[] blockTileds = { 28, 44, 36, 45, 37, 31, 2, 47, 40, 38, 46, 25,
 				26, 27, 35, 43, 42, 41, 33, 11, 18, 9, 20, 21, 19, 17 };
+		// Mediante este bucle lleno de if y else, comprueba que posiciones si
+		// pueden ser viables teniendo en cuenta todo, por ejemplo si el
+		// personaje está en la esquina izquierda superior del mapa:
+		// posicion 0:0, tiene que dar por sentado que no se puede mover ni
+		// hacia Arriba ni hacia la izquierda y así sucesivamente.
+
 		for (int v = 0; v < blockTileds.length; v++) {
 			if (x == 0) {
 				result[3] = false;
@@ -447,6 +494,11 @@ public class Controlador {
 		return result;
 	}
 
+	// Tras calcular las flechas y clicar sobre una mediante ajax DWR este
+	// metodo recibe la posicion, el id y el nombre de usuario el cual guarda en
+	// la base de datos de forma automatica con cada movimiento del personaje a
+	// forma de autoguardado(Lo utilizo para la beta del juego ya que despues
+	// funcionará con sesion y un boton de guardar partida)
 	public void mueve(int x, int y, int id, String user) {
 		player.setPosX(x);
 		player.setPosY(y);
@@ -456,6 +508,8 @@ public class Controlador {
 	}
 
 	/**************************** Guardar y Cargar ****************************/
+	// Metodo en fase beta que lo que hará será modificar la sesion para
+	// continuar la partida sin necesidad de tocar la base de datos
 	public void modSession(SesionPlayer player) {
 		SesionPlayer mod = leerSesion();
 		WebContext ctx = WebContextFactory.get();
@@ -470,6 +524,8 @@ public class Controlador {
 		req.getSession().setAttribute("SesionPlayer", mod);
 	}
 
+	// Tras Mover, debido a eventos u quest los atributos de sesion pueden
+	// cambiar de forma que se leen de nuevo para mostrarlos por pantalla
 	public SesionPlayer leerSesion() {
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();
@@ -478,6 +534,8 @@ public class Controlador {
 		return na;
 	}
 
+	// Coge los datos del personaje de la base de datos para rellenar el objeto
+	// y actualiza la sesion con los nuevos cambios anteriormente producidos
 	public void saveSesion(String user) {
 		SesionPlayer sesion = perdao.PlayerSesion(user);
 		WebContext ctx = WebContextFactory.get();
@@ -485,6 +543,8 @@ public class Controlador {
 		req.getSession().setAttribute("SesionPlayer", sesion);
 	}
 
+	// Como su propio nombre indica, invalida la sesion y devuelve a la pagina
+	// principal
 	public void closeSession() {
 		WebContext ctx = WebContextFactory.get();
 		HttpServletRequest req = ctx.getHttpServletRequest();

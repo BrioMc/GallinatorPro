@@ -10,8 +10,13 @@
 			<td>Level: ${SesionPlayer.lv }</td>
 		</tr>
 		<tr>
-			<td colspan="2">HP:${SesionPlayer.sangre }/${SesionPlayer.maxSangre }</td>
-			<td>MP:${SesionPlayer.mana }/${SesionPlayer.maxMana}</td>
+			<td colspan="3">HP:<progress class="progress" id="progressangre"
+					max="${SesionPlayer.maxSangre }" value="${SesionPlayer.sangre }"></progress></td>
+
+		</tr>
+		<tr>
+			<td colspan="3">MP:<progress class="progress" id="progressmana"
+					max="${SesionPlayer.maxMana}" value="${SesionPlayer.mana }"></progress></td>
 		</tr>
 		<tr>
 			<td colspan="2">Fuerza:</td>
@@ -24,5 +29,3 @@
 	</table>
 	<button onclick="closeSession()">Cerrar Sesión</button>
 </div>
-
-

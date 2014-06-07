@@ -1,66 +1,55 @@
 package gallinator.DAO;
 
-import gallinator.bean.SesionPlayer;
+import gallinator.modelo.Enemigo;
+import gallinator.modelo.Personaje;
+import gallinator.modelo.Quest;
 import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 
 public class CombateDAO extends ConexionDB {
+	private String UPDATE_BATTLE = "update personaje set Score=Score+?, Exp=Exp+?, Sangre=?,Mana=? where idPersonaje=?";
+	private String UPDATE_SCORE_QUEST = "update personaje set Score=Score+?, where idPersonaje=?";
 
-	public void save(SesionPlayer usuario) {
+	public void actStatusBattle(Enemigo enemy, Personaje pj) {
 		try {
 			getConexion();
-			String insert = "insert into usuario(User, Pass, Email) values(?,?,?)";
-			pstmt = conexion.prepareStatement(insert);
-			pstmt.setInt(1, usuario.getSangre());
-			pstmt.setInt(2, usuario.getMaxSangre());
-			pstmt.setInt(3, usuario.getMana());
-			pstmt.setInt(4, usuario.getMaxMana());
-			pstmt.setInt(5, usuario.getDmgF());
-			pstmt.setInt(6, usuario.getDmgH());
-			pstmt.setInt(7, usuario.getExp());
-			pstmt.setInt(8, usuario.getLv());
+			pstmt = conexion.prepareStatement(UPDATE_BATTLE);
+			pstmt.setInt(1, enemy.getPoints());
+			pstmt.setInt(2, enemy.getExp());
+			pstmt.setInt(3, pj.getSangre());
+			pstmt.setInt(4, pj.getMana());
+			pstmt.setInt(5, pj.getId());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getErrorCode());
-			e.printStackTrace();
-		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			cerrar();
 		}
+
 	}
 
-	public SesionPlayer load(String user) {
-		SesionPlayer SesionLogin = new SesionPlayer();
-		String sql = "select * from personaje where UsuarioFK=?";
+	public void scoreQuest(int score, int pj) {
 		try {
 			getConexion();
-			pstmt = conexion.prepareStatement(sql);
-			pstmt.setString(1, user);
-			resultado = pstmt.executeQuery();
-			if (resultado.next()) {
-				SesionLogin.setId(resultado.getInt("idPersonaje"));
-				SesionLogin.setAlias(resultado.getString("Alias"));
-				SesionLogin.setClase(resultado.getString("Clase"));
-				SesionLogin.setUsuario(resultado.getString("UsuarioFK"));
-				SesionLogin.setSangre(resultado.getInt("Sangre"));
-				SesionLogin.setMana(resultado.getInt("Mana"));
-				SesionLogin.setMaxSangre(resultado.getInt("MaxSangre"));
-				SesionLogin.setMaxMana(resultado.getInt("MaxMana"));
-				SesionLogin.setDmgF(resultado.getInt("DmgF"));
-				SesionLogin.setDmgH(resultado.getInt("DmgH"));
-				SesionLogin.setExp(resultado.getInt("Exp"));
-				SesionLogin.setLv(resultado.getInt("Lv"));
-			}
+			pstmt = conexion.prepareStatement(UPDATE_SCORE_QUEST);
+			pstmt.setInt(1, score);
+			pstmt.setInt(2, pj);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println(e.getErrorCode());
-			e.printStackTrace();
-		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return SesionLogin;
 	}
 
+	public void sentenciaQuest(Quest quest, int pj) {
+		try {
+			getConexion();
+			pstmt = conexion.prepareStatement(quest.getSentenciaSQL());
+			pstmt.setInt(1, pj);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
