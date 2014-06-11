@@ -58,6 +58,8 @@ public class ControladorLogin extends HttpServlet {
 							SesionLogin);
 					response.sendRedirect("index.jsp");
 				}
+			} else {
+				response.sendRedirect("index.jsp");
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

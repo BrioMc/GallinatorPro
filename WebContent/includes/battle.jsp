@@ -35,8 +35,7 @@
 			<!-- text -->
 		</div>
 		<div id="battlepjoptions">
-			<button>ATTACK</button>
-			<button>RUN</button>
+			<!-- text -->
 		</div>
 	</div>
 	<div id="battleinfo">

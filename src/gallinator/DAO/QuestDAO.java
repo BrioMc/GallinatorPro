@@ -203,4 +203,31 @@ public class QuestDAO extends ConexionDB {
 		}
 		return lista;
 	}
+
+	public boolean existQuest(int opt, int x, int y) {
+		String insert = "";
+		if (opt == 1) {
+			insert = "select * from quest where PosX_init=? and PosY_init=?";
+
+		} else {
+			insert = "select * from quest where PosX_finish=? and PosY_finish=?";
+		}
+		boolean existe = false;
+		try {
+			getConexion();
+			pstmt = conexion.prepareStatement(insert);
+			pstmt.setInt(1, x);
+			pstmt.setInt(2, y);
+			resultado = pstmt.executeQuery();
+			if (resultado.next()) {
+				existe = true;
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			cerrar();
+		}
+		return existe;
+	}
+
 }

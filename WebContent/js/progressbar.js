@@ -1,4 +1,4 @@
-function animateprogress (id, val){    
+function progress (id, val){    
  
  
     var getRequestAnimationFrame = function () {  /* <------- Declaro getRequestAnimationFrame intentando obtener la máxima compatibilidad con todos los navegadores */
@@ -20,7 +20,7 @@ function animateprogress (id, val){
     if (i<=val)
         {
             document.querySelector(id).setAttribute("value",i);      /* <----  Incremento el valor de la barra de progreso */
-            document.querySelector(id+"+ span").innerHTML = i+"%";     /* <---- Incremento el porcentaje y lo muestro en la etiqueta span */
+           // document.querySelector(id+"+ span").innerHTML = i+"%";     /* <---- Incremento el porcentaje y lo muestro en la etiqueta span */
             i++;
             fpAnimationFrame(animacion);          /* <------------------ Mientras que el contador no llega al porcentaje fijado la función vuelve a llamarse con fpAnimationFrame     */
         }

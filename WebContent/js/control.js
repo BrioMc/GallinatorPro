@@ -31,11 +31,6 @@ $(document).ready(function() {
 		tabla.append(tr);
 	}
 	nextstepgame();
-/*-------Movimientos-------*/	
-
-
-	
-
 });
 
 

@@ -1,5 +1,5 @@
 <div id="player">
-	<table>
+	<table id="playerstatus">
 		<tr>
 			<td colspan="2">Nick:</td>
 			<td>${SesionPlayer.alias }</td>

@@ -49,7 +49,7 @@
 
 		});
 
-		$('#ghostType').append("<button>A</button>");
+		// $('#ghostType').append("<button>A</button>");
 	};
 
 })(jQuery);

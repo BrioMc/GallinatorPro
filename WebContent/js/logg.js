@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 	$('#logginbutton').click(function() {
 		$('#logginbutton').hide();
 		$('#signinbutton').hide();
