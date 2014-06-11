@@ -5,7 +5,9 @@ import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+/**
+ * Clase DAO que maneja la relaciones entre pj y quest
+ */
 public class PJQuestDAO extends ConexionDB {
 	private String INSERT_STATEMENT = "INSERT INTO quest_personaje (Quest, Personaje) VALUES (?,?)";
 	private String FOUND_STATEMENT = "select * from quest_personaje where Quest=? and Personaje=?";
