@@ -1,5 +1,8 @@
 package gallinator.tileMap;
 
+/**
+ * Clase Mapa que tiene todos los atributos del mismo
+ */
 public class Mapa {
 
 	private int height; // Alto

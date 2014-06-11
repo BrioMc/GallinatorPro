@@ -5,6 +5,7 @@ import gallinator.modelo.PJQuest;
 
 import java.util.Collection;
 
+/** Clase que devuelve una lista de objetos PJQuest */
 public class ListaPJQuest {
 	private String clausulaWhere = new String();
 
@@ -18,7 +19,7 @@ public class ListaPJQuest {
 
 	public Collection<PJQuest> getPJQuest() {
 
-		Collection<PJQuest> pjquest= ModelFackade.getPJQuest(clausulaWhere);
+		Collection<PJQuest> pjquest = ModelFackade.getPJQuest(clausulaWhere);
 		return pjquest;
 	}
 }

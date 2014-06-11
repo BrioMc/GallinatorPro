@@ -16,10 +16,16 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+/**
+ * Clase DAO de los metodos que interactuan entre la bd y el objeto enemigo
+ */
 public class EnemigoDAO extends ConexionDB {
 	private String UPDATE_STATEMENT = "update enemigo set Nombre=?, Imagen=?, Dmg=?, Sangre=?, Exp=?, Points=? where idEnemigo=?";
 	private String INSERT_STATEMENT = "INSERT INTO enemigo (Nombre, Imagen, Dmg, Sangre, Exp, Points) VALUES (?,?,?,?,?,?)";
 
+	/**
+	 * Metodo por el cual se añade un enemigo a la base de datos
+	 */
 	public void añadirEnemigo(HttpServletRequest req, String ubicacion) {
 		try {
 			int i = 0;
@@ -89,6 +95,10 @@ public class EnemigoDAO extends ConexionDB {
 
 	}
 
+	/**
+	 * Metodo Que devuelve un arrayList de objetos Enemigo con todos los
+	 * enemigos obtenidos de la bd
+	 */
 	public ArrayList<Enemigo> leerEnemigo(String clausulaWhere) {
 
 		ArrayList<Enemigo> lista = new ArrayList<Enemigo>();
@@ -117,6 +127,9 @@ public class EnemigoDAO extends ConexionDB {
 		return lista;
 	}
 
+	/**
+	 * Metodo para borrar un enemigo de la base de datos
+	 */
 	public void delEnemy(int id) {
 		String insert = "delete from enemigo where idEnemigo=?";
 		try {
@@ -131,6 +144,10 @@ public class EnemigoDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Metodo para obtener un Objeto Enemigo con los datos de uno buscado por su
+	 * id
+	 */
 	public Enemigo takeEnemy(int id) {
 		Enemigo enemy = new Enemigo();
 		try {

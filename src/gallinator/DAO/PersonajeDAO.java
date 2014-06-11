@@ -7,7 +7,13 @@ import gallinator.pojo.ConexionDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Clase DAO que maneja los metodos del objeto Personaje
+ */
 public class PersonajeDAO extends ConexionDB {
+	/**
+	 * Guarda las estadisticas del player
+	 */
 	public void savePJ(SesionPlayer player) {
 		try {
 			getConexion();
@@ -32,6 +38,9 @@ public class PersonajeDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Guarda la posicion del jugador
+	 */
 	public void Mueve(int id, int posX, int posY) {
 		try {
 			getConexion();
@@ -52,6 +61,9 @@ public class PersonajeDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Devuelve un ArrayList con todos los personajes y sus atributos
+	 */
 	public ArrayList<Personaje> leerPersonaje(String clausulaWhere) {
 
 		ArrayList<Personaje> lista = new ArrayList<Personaje>();
@@ -88,6 +100,10 @@ public class PersonajeDAO extends ConexionDB {
 		return lista;
 	}
 
+	/**
+	 * Devuelve los datos de un solo personaje especifico mediante un objeto
+	 * SesionPlayer
+	 */
 	public SesionPlayer PlayerSesion(String user) {
 		SesionPlayer SesionLogin = new SesionPlayer();
 		String sql = "select * from personaje where UsuarioFK=?";
@@ -125,6 +141,9 @@ public class PersonajeDAO extends ConexionDB {
 		return SesionLogin;
 	}
 
+	/**
+	 * Registra el jugador dando ciertos datos del objeto de sesion
+	 */
 	public void RegisterPlayer(SesionPlayer player) {
 		try {
 			getConexion();

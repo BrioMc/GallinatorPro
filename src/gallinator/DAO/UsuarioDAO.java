@@ -6,8 +6,13 @@ import gallinator.pojo.ConexionDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Clase DAO que maneja mediante objetos Usuario la base de datos del mismo
+ */
 public class UsuarioDAO extends ConexionDB {
-	
+	/**
+	 * Devuelve el ArrayList de la lista de Usuario y sus atributos
+	 */
 	public ArrayList<Usuario> leerUsuario(String clausulaWhere) {
 		ArrayList<Usuario> lista = new ArrayList<Usuario>();
 
@@ -33,6 +38,9 @@ public class UsuarioDAO extends ConexionDB {
 		return lista;
 	}
 
+	/**
+	 * Borra un usuario
+	 */
 	public void delUser(int id) {
 		getConexion();
 		String insert = "delete from usuario where id=?";
@@ -47,7 +55,9 @@ public class UsuarioDAO extends ConexionDB {
 			cerrar();
 		}
 	}
-
+	/**
+	 * Modifica el usuario
+	 */
 	public void modUser(Usuario user) {
 
 		String insert = "update Usuario set User=?, Pass=?, Email=? where id=?";
@@ -66,7 +76,9 @@ public class UsuarioDAO extends ConexionDB {
 			cerrar();
 		}
 	}
-
+	/**
+	 * Devuelve un objeto Usuario con los datos del obtenido mediante el id
+	 */
 	public Usuario takeUser(int id) {
 		Usuario usuario = new Usuario();
 		try {
@@ -89,7 +101,9 @@ public class UsuarioDAO extends ConexionDB {
 		}
 		return usuario;
 	}
-
+	/**
+	 * Registra en la BD el usuario
+	 */
 	public void RegisterUser(Usuario usuario) {
 		try {
 			getConexion();

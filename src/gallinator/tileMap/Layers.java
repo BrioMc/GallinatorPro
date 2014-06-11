@@ -1,5 +1,7 @@
 package gallinator.tileMap;
-
+/**
+ * Clase Layers de las capas del mapa del juego
+ */
 public class Layers {
 	private int[] data;
 	private int height;

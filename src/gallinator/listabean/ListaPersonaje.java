@@ -5,6 +5,9 @@ import gallinator.modelo.Personaje;
 
 import java.util.ArrayList;
 
+/**
+ * Clase que devuelve una lista de objetos Personaje
+ */
 public class ListaPersonaje {
 	private String clausulaWhere = new String();
 
@@ -18,7 +21,8 @@ public class ListaPersonaje {
 
 	public ArrayList<Personaje> getPersonaje() {
 
-		ArrayList<Personaje> personaje= ModelFackade.getPersonaje(clausulaWhere);
+		ArrayList<Personaje> personaje = ModelFackade
+				.getPersonaje(clausulaWhere);
 		return personaje;
 	}
 }

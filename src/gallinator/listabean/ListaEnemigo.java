@@ -5,6 +5,7 @@ import gallinator.modelo.ModelFackade;
 
 import java.util.ArrayList;
 
+/** Clase que devuelve una lista de objetos Enemigo */
 public class ListaEnemigo {
 
 	private String clausulaWhere = new String();

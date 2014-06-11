@@ -1,5 +1,7 @@
 package gallinator.tileMap;
-
+/**
+ * Clase Terrains de los distintos terrenos del mapa (arena,piedra,ladrillo,etc)
+ */
 public class Terrains {
 	private String name;
 	private int tile;

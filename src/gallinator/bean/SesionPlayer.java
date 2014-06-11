@@ -2,6 +2,9 @@ package gallinator.bean;
 
 import java.io.Serializable;
 
+/**
+ * Clase bean que usará la sesion, el objeto es Personaje"
+ */
 public class SesionPlayer implements Serializable {
 
 	private static final long serialVersionUID = 1L;

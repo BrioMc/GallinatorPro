@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ControladorEnemigo
+ * Sevlet que controla la modificación u el añadido de Enemigos
  */
 public class ControladorEnemigo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +42,7 @@ public class ControladorEnemigo extends HttpServlet {
 
 		String ubicacion = request.getServletContext().getRealPath("");
 		System.out.println("Entra aquí");
-		edao.añadirEnemigo(request,ubicacion);
+		edao.añadirEnemigo(request, ubicacion);
 		response.sendRedirect("admin/admin_enemigos.jsp");
 	}
 

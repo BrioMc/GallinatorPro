@@ -2,7 +2,11 @@ package gallinator.bean;
 
 import java.io.Serializable;
 
-public class PJQuestBean implements Serializable{
+/**
+ * Clase Bean del Objeto "PJQuest"(El objeto que lleva la relación entre la
+ * quest y el personaje
+ */
+public class PJQuestBean implements Serializable {
 	/**
 	 * 
 	 */

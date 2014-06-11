@@ -10,6 +10,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+/**
+ * Clase que establece la conexion con la base de datos
+ */
 public class ConexionDB {
 
 	private static final String DataSource = "java:/comp/env/jdbc/gallinator";
@@ -23,6 +26,9 @@ public class ConexionDB {
 	public ConexionDB() {
 	}
 
+	/**
+	 * Toma la conexión
+	 */
 	public Connection getConexion() {
 		try {
 			Context initContext = new InitialContext();
@@ -38,6 +44,9 @@ public class ConexionDB {
 		return conexion;
 	}
 
+	/**
+	 * Cierra la conexión
+	 */
 	public void cerrar() {
 		try {
 			if (conexion != null) {

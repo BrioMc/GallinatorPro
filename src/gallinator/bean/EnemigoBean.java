@@ -2,6 +2,9 @@ package gallinator.bean;
 
 import java.io.Serializable;
 
+/**
+ * Clase Bean del Objeto "Enemigo"
+ */
 public class EnemigoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;

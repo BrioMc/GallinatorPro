@@ -5,8 +5,13 @@ import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 
+/**
+ * Clase DAO de los metodos que interactuan con la sesion del jugador
+ */
 public class PartidaDAO extends ConexionDB {
-
+	/**
+	 * Metodo que guarda la posicion actual del jugador
+	 */
 	public void savePosition(SesionPlayer usuario) {
 		try {
 			System.out.println("Entra a guardar");
@@ -17,7 +22,6 @@ public class PartidaDAO extends ConexionDB {
 			pstmt.setInt(2, usuario.getPosY());
 			pstmt.setInt(3, usuario.getId());
 			pstmt.executeUpdate();
-			System.out.println("ejecuta"+usuario.getPosX()+""+usuario.getPosY()+""+usuario.getId());
 		} catch (SQLException e) {
 			System.out.println(e.getErrorCode());
 			e.printStackTrace();
@@ -31,6 +35,10 @@ public class PartidaDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Carga un Objeto SesionPlayer para introducirlo como bean de sesion tras
+	 * un loggin correcto
+	 */
 	public SesionPlayer load(String user) {
 		SesionPlayer SesionLogin = new SesionPlayer();
 		String sql = "select * from personaje where UsuarioFK=?";
@@ -63,7 +71,9 @@ public class PartidaDAO extends ConexionDB {
 		}
 		return SesionLogin;
 	}
-
+	/**
+	 * Registra un personaje asignandole la clase, el usuario, y un alias, el resto se encarga la base de datos
+	 */
 	public void RegisterPlayer(SesionPlayer player) {
 		try {
 			getConexion();
@@ -85,17 +95,4 @@ public class PartidaDAO extends ConexionDB {
 		}
 	}
 
-	public void EliminarProducto(String value) {
-		getConexion();
-		try {
-			String where = value;
-			pstmt = conexion.prepareStatement(where);
-			pstmt.setString(1, where);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
-}

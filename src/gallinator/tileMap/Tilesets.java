@@ -1,5 +1,7 @@
 package gallinator.tileMap;
-
+/**
+ * Clase Tilesets de los distintos bloques que componen el mapa
+ */
 public class Tilesets {
 	private int firstgid;
 	private String image;

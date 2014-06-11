@@ -2,10 +2,11 @@ package gallinator.bean;
 
 import java.io.Serializable;
 
+/**
+ * Clase Bean del Objeto "Quest"
+ */
 public class QuestBean implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private int idQuest;
 	private String definicion;

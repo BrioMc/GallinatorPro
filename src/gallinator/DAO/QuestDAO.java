@@ -6,7 +6,13 @@ import gallinator.pojo.ConexionDB;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * Clase dao que trabaja con los objetos Quest y la base de datos
+ */
 public class QuestDAO extends ConexionDB {
+	/**
+	 * Crea en la BD una nueva Quest a traves del Objeto del mismo
+	 */
 	public void addQuest(Quest quest) {
 		getConexion();
 		String insert = "INSERT INTO quest (Definicion, PosX_init, PosY_init, Respuesta, PosX_finish, PosY_finish, Points,Battle,Enemigo,Mejora,SentenciaSQL) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -33,6 +39,9 @@ public class QuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Borra una quest
+	 */
 	public void delQuest(int id) {
 		getConexion();
 		String insert = "delete from quest where idQuest=?";
@@ -48,6 +57,9 @@ public class QuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Modifica una quest a traves de los atributos del objeto pasado
+	 */
 	public void modQuest(Quest quest) {
 
 		String insert = "update quest set Definicion=?, PosX_init=?, PosY_init=?, Respuesta=?, PosX_finish=?, PosY_finish=?, Points=?, Battle=?,Enemigo=?,Mejora=?,SentenciaSQL=? where idQuest=?";
@@ -75,6 +87,9 @@ public class QuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Devuelve la quest seleccionada por su id
+	 */
 	public Quest takeQuest(int id) {
 		Quest quest = new Quest();
 		try {
@@ -105,6 +120,9 @@ public class QuestDAO extends ConexionDB {
 		return quest;
 	}
 
+	/**
+	 * Devuelve la quest seleccionada por su posicion X e Y de inicio
+	 */
 	public Quest initQuest(int x, int y) {
 		Quest quest = new Quest();
 		try {
@@ -138,6 +156,9 @@ public class QuestDAO extends ConexionDB {
 		return quest;
 	}
 
+	/**
+	 * Devuelve la quest seleccionada por su posicion X e Y de finish
+	 */
 	public Quest finishQuest(int x, int y) {
 		Quest quest = new Quest();
 		try {
@@ -171,6 +192,10 @@ public class QuestDAO extends ConexionDB {
 		return quest;
 	}
 
+	/**
+	 * Devuelve un ArrayList de Objetos Quest compuesto por atributos de las
+	 * Quest existentes
+	 */
 	public ArrayList<Quest> leerQuest(String clausulaWhere) {
 
 		ArrayList<Quest> lista = new ArrayList<Quest>();
@@ -203,7 +228,9 @@ public class QuestDAO extends ConexionDB {
 		}
 		return lista;
 	}
-
+	/**
+	 * Devuelve boolean de si existe quest por las posiciones de inicio o finalización
+	 */
 	public boolean existQuest(int opt, int x, int y) {
 		String insert = "";
 		if (opt == 1) {

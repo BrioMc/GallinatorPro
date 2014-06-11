@@ -1,7 +1,9 @@
 package gallinator.bean;
 
 import java.io.Serializable;
-
+/**
+ * Clase Bean del Objeto "Usuario"
+ */
 public class UsuarioBean implements Serializable {
 	/**
 	 * 

@@ -11,11 +11,7 @@ public class JSON {
 	private static ObjectMapper mapper = new ObjectMapper();
 
 	/**
-	 * Read a JSON file
-	 * 
-	 * @param fileName
-	 * @param cls
-	 * @return
+	 * Lee el JSON y escribe mapeandolo en la clase pasada
 	 */
 	public static <T> T read(String fileName, Class<T> cls) {
 		InputStream is = null;

@@ -10,6 +10,10 @@ public class PJQuestDAO extends ConexionDB {
 	private String INSERT_STATEMENT = "INSERT INTO quest_personaje (Quest, Personaje) VALUES (?,?)";
 	private String FOUND_STATEMENT = "select * from quest_personaje where Quest=? and Personaje=?";
 
+	/**
+	 * Devuelve un ArrayList con la lista de las relaciones entre PJ y Quest
+	 * (Queda pendiente de mejora)
+	 */
 	public ArrayList<PJQuest> leerPJQuest(String clausulaWhere) {
 
 		ArrayList<PJQuest> lista = new ArrayList<PJQuest>();
@@ -37,6 +41,11 @@ public class PJQuestDAO extends ConexionDB {
 		return lista;
 	}
 
+	/**
+	 * 
+	 * Borra una relacion entre pj y quest por si hubiera algun error u otro
+	 * motivo
+	 */
 	public void delPJQ(int id) {
 		String insert = "delete from quest_personaje where idquest_personaje=?";
 		try {
@@ -51,6 +60,9 @@ public class PJQuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Creo la relacion entre pj y quest en la bd
+	 */
 	public void insertPJQuest(int pj, int quest) {
 		try {
 			getConexion();
@@ -65,6 +77,10 @@ public class PJQuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * 
+	 * Toma el objeto PJQuest con atributos especificos de una relación
+	 */
 	public PJQuest takePJQuest(int id, int quest) {
 		PJQuest pjq = new PJQuest();
 		try {
@@ -89,6 +105,10 @@ public class PJQuestDAO extends ConexionDB {
 		return pjq;
 	}
 
+	/**
+	 * Actualiza la relación si cierto pj ha iniciado cierta quest para que no
+	 * vuelva a saltar dicho evento
+	 */
 	public void updateInit(int id, int quest) {
 		try {
 			getConexion();
@@ -105,6 +125,10 @@ public class PJQuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Actualiza la relación si cierto pj ha iniciado cierta quest y la va a
+	 * finalizar para que no vuelva a saltar dicho evento
+	 */
 	public void updateDone(int id, int quest) {
 		try {
 			getConexion();
@@ -121,6 +145,10 @@ public class PJQuestDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * Devuelve un booleano diciendo si existe o no un evento en la posicion del
+	 * pj
+	 */
 	public boolean existPJQuest(int pj, int quest) {
 		boolean existe = false;
 		try {

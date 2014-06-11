@@ -7,10 +7,17 @@ import gallinator.pojo.ConexionDB;
 
 import java.sql.SQLException;
 
+/**
+ * Clase DAO de los metodos lanzados tras una batalla con tal de actualizar los
+ * datos del personaje"
+ */
 public class CombateDAO extends ConexionDB {
 	private String UPDATE_BATTLE = "update personaje set Score=Score+?, Exp=Exp+?, Sangre=?,Mana=? where idPersonaje=?";
 	private String UPDATE_SCORE_QUEST = "update personaje set Score=Score+?, where idPersonaje=?";
 
+	/**
+	 * Actualiza el status del pj tras una batalla
+	 */
 	public void actStatusBattle(Enemigo enemy, Personaje pj) {
 		try {
 			getConexion();
@@ -28,6 +35,9 @@ public class CombateDAO extends ConexionDB {
 
 	}
 
+	/**
+	 * Suma el score tras completar una quest
+	 */
 	public void scoreQuest(int score, int pj) {
 		try {
 			getConexion();
@@ -41,6 +51,9 @@ public class CombateDAO extends ConexionDB {
 		}
 	}
 
+	/**
+	 * En caso de tener sentencia la quest cumplimentada, está se lanzará mediante este metodo
+	 */
 	public void sentenciaQuest(Quest quest, int pj) {
 		try {
 			getConexion();

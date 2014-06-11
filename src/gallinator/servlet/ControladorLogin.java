@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Controlar_Login
+ * Servlet que controla el login de usuario
  */
 public class ControladorLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -26,6 +26,11 @@ public class ControladorLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 	}
 
+	/**
+	 * Comprueba si el usuario logeado existe, si existe comprueba si es usuario
+	 * o admin a partir de ahí envia a una pagina u otra y crea el bean de
+	 * sesion adecuado
+	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
