@@ -25,6 +25,9 @@ import javax.servlet.http.HttpSession;
 import org.directwebremoting.WebContext;
 import org.directwebremoting.WebContextFactory;
 
+/**
+ * Clase principal que controla todos los metodos AJAX DWR
+ */
 public class Controlador {
 	private UsuarioDAO udao = new UsuarioDAO();
 	private CombateDAO cdao = new CombateDAO();
@@ -313,6 +316,12 @@ public class Controlador {
 	 */
 	public void deleteEnemy(int id) {
 		ndao.delEnemy(id);
+	}
+
+	/** Devuelve los id de los enemigos */
+	public int[] idsEnemy() {
+		int[] id = ndao.idEnemy();
+		return id;
 	}
 
 	/****************************** User ****************************/

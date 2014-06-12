@@ -23,7 +23,7 @@
 </script>
 <script type="text/javascript" src="../js/functions_admin.js">
 <!--text-->
-		
+	
 </script>
 <link rel="stylesheet" type="text/css" href="../style/admin.css"
 	media="screen" />
@@ -43,7 +43,8 @@
 			<li><a href="admin_enemigos.jsp">Enemigos</a></li>
 			<li><a href="admin_pjquest.jsp">PJ_Quests</a></li>
 			<li><a href="admin_quest.jsp">Quests</a></li>
-			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar Sesion</a></li>
+			<li><a id="closesession" href="#" onclick="closeSession()">Cerrar
+					Sesion</a></li>
 		</ul>
 		<div class="clr"></div>
 		<section class="block">
@@ -62,7 +63,6 @@
 					<th>Pos X</th>
 					<th>Pos Y</th>
 					<th>Score</th>
-					<th>Seleccion</th>
 				</tr>
 				<c:forEach var="personaje" items="${listaPersonaje.personaje}">
 					<tr>
@@ -78,8 +78,6 @@
 						<td>${personaje.posX}</td>
 						<td>${personaje.posY}</td>
 						<td>${personaje.score}</td>
-						<td><input type="checkbox" name="seleccion[]"
-							vale="${personaje.id}" /></td>
 					</tr>
 				</c:forEach>
 			</table>

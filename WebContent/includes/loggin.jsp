@@ -43,6 +43,7 @@
 	<button id="logginbutton">Iniciar sesión</button>
 	<button id="signinbutton">Registrarse</button>
 	<div id="loggin">
+		<h1>Login</h1>
 		<form action="ControladorLogin" method="post">
 			<label>Usuario:</label> <input type="text" name="user" required /> <label>Contraseña:</label><input
 				type="password" name="pass" /> <input type="submit" value="Loggin"
@@ -50,7 +51,8 @@
 		</form>
 	</div>
 	<div id="signin">
-		<form id="signinform"action="ControladorRegistro" method="post">
+		<h1>Registro</h1>
+		<form id="signinform" action="ControladorRegistro" method="post">
 			<table>
 				<tr>
 					<td>Usuario:</td>

@@ -14,9 +14,10 @@ table {
 
 .wrapper {
 	background: white;
-	margin: auto;
+	margin: 50px auto;
 	padding: 1em;
 	width: 65%;
+	box-shadow: 0px -10px 10px;
 }
 
 h1 {
@@ -26,6 +27,7 @@ h1 {
 ul.tabs {
 	list-style-type: none;
 	margin: 0;
+	float: left;
 	padding: 0;
 }
 

@@ -11,6 +11,7 @@ function closeSession(){
 
 function nextstepgame() {
 	emptytd();
+	Controlador.comprobarQuests();
 	Controlador.arrayMapa(function(tpt) {
 		arrayTiled = tpt;
 
@@ -39,7 +40,6 @@ function nextstepgame() {
 
 			quest();});
 	});
-
 }
 
 function movestep(x,y) {
@@ -64,7 +64,6 @@ function seeStatus(){
 			Tupla[5]="<tr><td colspan='2'>Sabiduria:</td><td>"+user.dmgH +"</td></tr>";
 			$.each(Tupla, function( index, value ) {
 				tabla.append(value);
-				alert(value);
 			});
 });
 	}

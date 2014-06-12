@@ -6,6 +6,7 @@ function initBattleQuest() {
 	pjlife = document.querySelector('#pjlife');
 	options = $('#battlepjoptions');
 	text = $('#ghostType');
+	text.text("");
 	batalla.addClass("animated rotateIn");
 	batalla.show();
 	Controlador.takeQuest(2, function(quest) {
@@ -49,36 +50,37 @@ function randomBattle() {
 				text.text("");
 				batalla.addClass("animated rotateIn");
 				batalla.show();
-				var enemy = 1 + Math.floor(Math.random() * 4);
-				Controlador.seeEnemy(enemy, function(enemy) {
-					text.text("Un " + enemy.nombre + " salvaje apareció.");
-					enemylife.setAttribute("max", enemy.sangre);
-					img = "<img src='" + enemy.imagen + "'/>";
-					imgenemy.empty();
-					imgenemy.append("<h1></h1>");
-					imgenemy.append(img);
-					progress("#enemylife", enemy.sangre);
-					$('#battleenemyimg h1').text(enemy.nombre);
-					Controlador.leerSesion(function(user) {
-						pjlife.setAttribute("max", user.maxSangre);
-						pjlife.setAttribute("value", user.sangre);
-						if (user.clase == "warrior") {
-							img = "<img src='images/pj/warrior.png'/>";
-						} else {
-							img = "<img src='images/pj/mage.png'/>";
-						}
-						pjimg.empty();
-						pjimg.append("<h1></h1>");
-						pjimg.append(img);
-						$('#battlepjimg h1').text(user.alias);
-						attack = "<button onclick='attackpj(" + enemy.id
-								+ ")'>ATTACK</button>";
-						options.empty();
-						options.append(attack);
+				Controlador.idsEnemy(function(ids){
+					var enemy = 1 + Math.floor(Math.random() * ids.length-1);
+					console.log(enemy);
+					Controlador.seeEnemy(ids[enemy], function(enemy) {
+						text.text("Un " + enemy.nombre + " salvaje apareció.");
+						enemylife.setAttribute("max", enemy.sangre);
+						img = "<img src='" + enemy.imagen + "'/>";
+						imgenemy.empty();
+						imgenemy.append("<h1></h1>");
+						imgenemy.append(img);
+						progress("#enemylife", enemy.sangre);
+						$('#battleenemyimg h1').text(enemy.nombre);
+						Controlador.leerSesion(function(user) {
+							pjlife.setAttribute("max", user.maxSangre);
+							pjlife.setAttribute("value", user.sangre);
+							if (user.clase == "warrior") {
+								img = "<img src='images/pj/warrior.png'/>";
+							} else {
+								img = "<img src='images/pj/mage.png'/>";
+							}
+							pjimg.empty();
+							pjimg.append("<h1></h1>");
+							pjimg.append(img);
+							$('#battlepjimg h1').text(user.alias);
+							attack = "<button onclick='attackpj(" + enemy.id
+									+ ")'>ATTACK</button>";
+							options.empty();
+							options.append(attack);
+						});
 					});
-
 				});
-
 			}
 		}
 	});
@@ -90,7 +92,6 @@ function randomBattle() {
  * mensaje.removeClass("animated rotateIn"); }
  */
 function attackpj(ene) {
-
 	Controlador.leerSesion(function(user) {
 		enemylife = document.querySelector('#enemylife');
 		if (user.clase == "warrior") {
@@ -103,7 +104,8 @@ function attackpj(ene) {
 			vidaEnemy = enemylife.getAttribute("value");
 			enemylife.setAttribute("value", vidaEnemy - 1);
 		}
-		text.append("<p>Atacaste con una fuerza de "+user.dmg+"</p>");
+		text.append("<p>Atacaste con una fuerza de "+dmg+"</p>");
+		text.scrollTop(10000);
 		Controlador.seeEnemy(ene, function(enemy) {
 			if (vidaEnemy <= 0) {
 				saveStatus(enemy, user);
@@ -114,17 +116,23 @@ function attackpj(ene) {
 			console.log(acierta);
 			if (acierta > 3) {
 				text.append("Has recibido " + enemy.dmg	+ " puntos de daño<p>");
+				text.scrollTop(10000);
 				for (var i = 1; i <= enemy.dmg; i++) {
 					
 					vidaPJ = pjlife.getAttribute("value");
 					pjlife.setAttribute("value", vidaPJ - 1);
+				if(vidaPJ<=0){
+					pjlife.setAttribute("value", pjlife.getAttribute("max"));	
 				}
+				}
+				
 			} else {
 				text.append("<p>El ataque enemigo ha fallado</p>");
+				text.scrollTop(10000);
 			}
 		});
 	});
-	text.scrollTop(10000);
+	
 }
 function saveStatus(enemy, user) {
 	vidaPJ = pjlife.getAttribute("value");
@@ -148,7 +156,6 @@ function quest() {
 	});
 	Controlador.finishQuestPJ(function(tpt) {
 		if (tpt == 2) {
-			alert("finish quest");
 			Controlador.takeQuest(2, function(quest) {
 
 				if (quest.battle == "Y") {

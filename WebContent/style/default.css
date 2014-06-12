@@ -90,6 +90,11 @@ html,body,div {
 	height: 100%;
 }
 
+#sesionoff h1 {
+	text-align: center;
+	background-color: beige;
+}
+
 #logginbutton:hover,#signinbutton:hover {
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0
 		), color-stop(1, #3d94f6));

@@ -127,8 +127,44 @@ public class EnemigoDAO extends ConexionDB {
 		return lista;
 	}
 
+	public int[] idEnemy() {
+		int max = 0;
+		int i = 0;
+		try {
+			getConexion();
+			String insert = "select count(*) as cuenta from enemigo ";
+			pstmt = conexion.prepareStatement(insert);
+			resultado = pstmt.executeQuery();
+			if (resultado.next()) {
+				max = resultado.getInt("cuenta");
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			cerrar();
+		}
+		int[] ids = new int[max];
+		try {
+			getConexion();
+			String insert = "select * from enemigo ";
+			pstmt = conexion.prepareStatement(insert);
+			resultado = pstmt.executeQuery();
+			while (resultado.next()) {
+				ids[i] = (resultado.getInt("idEnemigo"));
+				i++;
+			}
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		} finally {
+			cerrar();
+		}
+
+		return ids;
+	}
+
 	/**
-	 * Metodo para borrar un enemigo de la base de datos
+	 * resultado.getInt("idEnemigo") Metodo para borrar un enemigo de la base de
+	 * datos
 	 */
 	public void delEnemy(int id) {
 		String insert = "delete from enemigo where idEnemigo=?";
