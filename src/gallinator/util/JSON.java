@@ -6,7 +6,9 @@ import java.io.InputStream;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+/**
+ * Clase que controla los archivos json
+ */
 public class JSON {
 	private static ObjectMapper mapper = new ObjectMapper();
 

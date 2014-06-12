@@ -14,6 +14,10 @@ import java.util.ArrayList;
 
 import org.apache.commons.beanutils.PropertyUtilsBean;
 
+/**
+ * Clase modelFackade que lleva distintos metodos de registro o muestra por
+ * seguridad copiando de bean a modelo
+ */
 public class ModelFackade {
 	private static UsuarioDAO udao = new UsuarioDAO();
 	private static PersonajeDAO pdao = new PersonajeDAO();
@@ -21,8 +25,8 @@ public class ModelFackade {
 	private static QuestDAO qdao = new QuestDAO();
 	private static PJQuestDAO pqdao = new PJQuestDAO();
 
-	/****************************************** Registros ******************************************/
-	// Registro de Usuario
+	/************** Registros **************/
+	/** Registro de Usuario */
 	public static void crearUsuario(UsuarioBean UsuBean) throws IOException {
 		Usuario usuario = new Usuario();
 		try {
@@ -37,7 +41,7 @@ public class ModelFackade {
 		udao.RegisterUser(usuario);
 	}
 
-	// Registro de Usuario
+	/** Registro del personaje */
 	public static void crearPersonaje(Personaje UsuBean) throws IOException {
 		SesionPlayer player = new SesionPlayer();
 		try {
@@ -52,35 +56,35 @@ public class ModelFackade {
 		pdao.RegisterPlayer(player);
 	}
 
-	/****************************************** Listas ******************************************/
-	// *********Usuario
+	/************** Listas **************/
+	/** Usuario */
 	public static ArrayList<Usuario> getUsuario(String clausulaWhere) {
 
 		ArrayList<Usuario> usuario = udao.leerUsuario(clausulaWhere);
 		return usuario;
 	}
 
-	// *********Personaje
+	/** Personaje */
 	public static ArrayList<Personaje> getPersonaje(String clausulaWhere) {
 
 		ArrayList<Personaje> personaje = pdao.leerPersonaje(clausulaWhere);
 		return personaje;
 	}
 
-	// *********Personaje
+	/** Personaje */
 	public static ArrayList<PJQuest> getPJQuest(String clausulaWhere) {
 		ArrayList<PJQuest> pjquest = pqdao.leerPJQuest(clausulaWhere);
 		return pjquest;
 	}
 
-	// *********Enemigos
+	/** Enemigos */
 	public static ArrayList<Enemigo> getEnemigo(String clausulaWhere) {
 
 		ArrayList<Enemigo> enemigo = edao.leerEnemigo(clausulaWhere);
 		return enemigo;
 	}
 
-	// *********Quests
+	/** Quests */
 	public static ArrayList<Quest> getQuest(String clausulaWhere) {
 
 		ArrayList<Quest> quest = qdao.leerQuest(clausulaWhere);

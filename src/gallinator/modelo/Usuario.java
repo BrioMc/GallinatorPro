@@ -1,5 +1,8 @@
 package gallinator.modelo;
 
+/**
+ * Clase modelo del Objeto "Usuario"
+ */
 public class Usuario {
 	private int id;
 	private String user;

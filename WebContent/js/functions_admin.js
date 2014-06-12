@@ -237,11 +237,22 @@ function recallUser() {
 	        $("#list_user  tr:last").remove();
 	    }}
 		$.each(tpt, function(i) {
-			$nuevodiv= $('<tr><td>'+tpt[i].user+'</td><td>'+tpt[i].pass+'</td><td>'+tpt[i].email+'</td><td><input type="checkbox" name="seleccion[]" value="'+tpt[i].id+'" /></td><td><button onclick="modEnemy('+tpt[i].id+')">Modificar</button></td></tr>');
-			$('#list_user').append($nuevodiv);
+			Tupla=[];
+			div="";
+			tabla=$('#list_user');
+				Tupla[0]="<tr><td>"+tpt[i].user+"</td>";
+				Tupla[1]="<td>"+tpt[i].pass+"</td>";
+				Tupla[2]="<td>"+tpt[i].email+"</td>";
+				Tupla[3]="<td><input type='checkbox' name='seleccion[]' value='"+tpt[i].id+"' /></td>";
+				Tupla[4]="<td><button onclick='modEnemy("+tpt[i].id+")'>Modificar</button></td></tr>";
+				$.each(Tupla, function( index, value ) {
+					div=div+value;
+				});
+				tabla.append(div);
 		});
 	});
-};
+}
+
 function modUser(id){		
 	if(id==$("input[name=idUser]").val() && $('#moduser').is(':visible')){
 		$('#moduser').hide();

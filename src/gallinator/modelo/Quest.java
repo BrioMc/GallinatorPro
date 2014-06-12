@@ -1,5 +1,8 @@
 package gallinator.modelo;
 
+/**
+ * Clase modelo del Objeto "Quest"
+ */
 public class Quest {
 	/**
 	 * 

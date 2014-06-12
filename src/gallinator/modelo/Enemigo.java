@@ -2,6 +2,9 @@ package gallinator.modelo;
 
 import java.io.Serializable;
 
+/**
+ * Clase modelo del Objeto "Enemigo"
+ */
 public class Enemigo implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;

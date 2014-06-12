@@ -1,5 +1,8 @@
 package gallinator.modelo;
 
+/**
+ * Clase modelo del Objeto "PJQuest"
+ */
 public class PJQuest {
 	private int idquest_personaje;
 	private int quest;
