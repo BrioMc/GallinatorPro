@@ -45,7 +45,7 @@ function nextstepgame() {
 function movestep(x,y) {
 	Controlador.leerSesion(function(tpt) {
 		sesion = tpt;
-		Controlador.mueve(sesion.posX +x, sesion.posY +y, sesion.id,sesion.usuario,function (){nextstepgame();randomBattle();});
+		Controlador.mueve(sesion.posX +x, sesion.posY +y, sesion.id,sesion.usuario,function (){nextstepgame();randomBattle();seeStatus();});
 		
 	});
 }

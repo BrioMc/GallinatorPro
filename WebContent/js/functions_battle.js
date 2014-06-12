@@ -122,6 +122,7 @@ function attackpj(ene) {
 					vidaPJ = pjlife.getAttribute("value");
 					pjlife.setAttribute("value", vidaPJ - 1);
 				if(vidaPJ<=0){
+					text.append("De forma milagrosa has recuperado todas tus energias<p>");
 					pjlife.setAttribute("value", pjlife.getAttribute("max"));	
 				}
 				}
@@ -141,6 +142,7 @@ function saveStatus(enemy, user) {
 	Controlador.afterBattle(enemy, user, function() {
 		batalla = $('#battle');
 		batalla.hide();
+		seeStatus();
 	});
 
 }
